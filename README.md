@@ -32,12 +32,29 @@ Which brings you to the next section:
 
 # Using routes on FRONT-END:
 
+How to use routes in your project.
 
-First include the js file in index.html: 
-    <script src = "admin/public/js/apijx/ajaxCall.js"></script>
+Create a file index.html (or whatever) in folder where admin folder is.
+In our example, folder my_project would have:
+ - admin folder
+ - index.html
 
-Than you can call 2 functions:
+Now include the js file in index.html:
 
+    <script src = "/my_project/admin/public/js/ajaxCall.js"></script>
+
+To test it try this:
+
+    <script>
+        (async()=>{
+            let resp = await promiseAjaxCall('apijx/model/languages/table', 'GET', {});
+            console.log(resp);
+        })();
+    </script>
+    
+Now just change languages to any table from your DB, and check your console.
+
+You have 2 function when calling some route:
 ajaxCall
 and
 promiseAjaxCall
@@ -45,8 +62,10 @@ promiseAjaxCall
 
 These are the functions called from the front-end. You can also look at function code, but the most important thing is that the function sorts the data for the call, and then it just calls the fetch and returns the data received.
 
+ajaxCall has 4 arguments: 
+    
+    ajaxCall (path, method, data, callback)
 
-ajaxCall has 4 arguments: ajaxCall (rout, method, data, callback)
 Example:
 
     ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(resp){        
@@ -56,7 +75,7 @@ Example:
 
 promiseAjaxCall returns a promise, it does not need a callback, so it is called via:
 
-    let response = await promiseAjaxCall (rout, method, data);
+    let response = await promiseAjaxCall (path, method, data);
 
 Example:
     
