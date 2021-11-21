@@ -3,21 +3,24 @@
 
 1. download admin folder from git
 
-2. htacces: change the rout on 2 places and set localhost/.../admin (fill in the rout) (
+2a. if its a react project, put it in public folder 
+2b. if its not, just place it in some folder ie my_project
 
-3. If this is not your first time using apijx, delete admin/server/config/configDB.php and admin/server/config/configTables.
+3. open admin/.htacces in your editor, change the path on 2 places and set http://localhost/my_project/admin/public (instead my_project write your folder name)
 
-4. open in the browser link: localhost/.../admin (complete the path)
+3. If this is not your first time using apijx, delete admin/server/config/configDB.php and admin/server/config/configTables.json
+
+4. open in the browser link: localhost/my_project/admin (complete the path)
 
 5. enter the name of the database and root admin user and pass in the respected fields (this is MANDATORY). Click on create.
 
-6. If an error occurs, correct it, then return to step 3.
+6. If everything is ok, you should see a refreshed page and 2 fields to login
 
 7. make at least 1 or 2 more users for the database you’re using (a regular - an average internet user, and an admin who is allowed to change the data) and import them in configDB.php.
 
 
 ## Open an admin panel
-Open localhost/.../admin in the browser and you can login to admin panel.
+Open localhost/my_project/admin in the browser and you can login to admin panel.
 
 You can login as superadmin, where you have options to change json files that represents your DataBase. 
 
