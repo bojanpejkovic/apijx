@@ -1,0 +1,28 @@
+1. configTables:
+"distinctMaterijali":{
+				"jsSrc": [],
+				"cssSrc": [],
+				"async": true
+			},
+            
+"adminSettings": {
+			"allowed": {
+				"queries": [
+					"userCheck", "distinctDelovi", "distinctMaterijali"
+				],
+
+2. sql_fields.json:
+    "sqlQueries": {
+        "distinctMaterijali": {
+			"sqlQuery": "SELECT distinct id, naziv FROM materijali"
+		}
+
+3. jinx-fns:
+jinxFn.distinctMaterijali = jinxFn.distinctValsFn('distinctMaterijali', 'distinctMaterijali', 'id', 'naziv');
+
+
+4. materijali.json:
+                "inputView": "NEW-ELEMENT",
+				"inputViewType": "distinctMaterijali",
+				"tableView": "NEW-ELEMENT",
+				"tableViewType": "distinctMaterijali",

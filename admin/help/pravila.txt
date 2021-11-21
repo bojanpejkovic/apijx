@@ -1,0 +1,174 @@
+
+
+==========================================================================
+
+
+============================================================================
+
+
+UPUTSTVO:
+1.NE TREBA TI NISTA DA BI DOBIO TABELU.
+2.AKO JE READ-ONLY SAMO DODAJ READONLY ATTR
+3.AKO MENJAS NEKA PPOLJA:
+	-DODAS KOD U HTMLU
+4.AKO JE POLJE PREKO PLUGINA
+	-DODAS U USER-DEFINED
+5.DODAJ SEARCH OPCIJE
+6.SORTIRANJE PREKO  form_display_order, table_display_order i search_display_order kao i sta hoces da se prikaze.
+7.CSS za svako polje pojedinacno mozes preko data-field[].
+8.PROMENOM fn_after_load_default_data mogu da se menjaju view-ovi!!!! nad jednom tabelom
+	objasnjenje:
+		-ucitava se default
+		-ucita se funkcija iz fn_after_load_default_data za promenu defaultnih vrednosti fieldova, sortiranja itd...
+		-pa se onda pravi page
+
+
+-kad je FORM, 
+..FormType moze biti:
+label
+text-short
+varchar
+password
+text-area
+text
+text-html
+number
+int
+checkbox
+boolean
+date
+time
+timestamp
+select
+
+-tableType i tableInputType
+	-ako je tableType prazno prepisuje se iz inputa
+	-ako je tableType DEFAULT uzima se FORM
+	-ako je tableType FORM a tableInputType prazno uzima se iz sql
+
+-i order by odredjuje koja se polja vide a koja ne
+
+-svi pluginovi koji traze php idu u plugins.php sa definisanim $_POST['plugin_type']
+
+-polje koje nije vezano ni za jedno sql polje direktno obavezno ima no_sql (text ili izvedeno polje kao informacija)
+
+-kad je search nesto van defaulta obavezno FORM-NEW-ELEMENT, 
+koja mora da ima povratnu funkciju val_as_obj.
+
+-tableMode : read_only(sve label), edit(default, ne mora se def), 
+
+-create_JSON_file_sufix sluzi da se napravi JSON file sa opcijama
+	-Taj file ce imati ime table+create_JSON_file_sufix.json
+	-ako se ostavi prazno ne pravi se fajl
+
+-kako se dodaju buttoni objasni:
+	OK preko tableRowButtons koji moze da se definise u JSON fajlu
+	OK ili ako je sve po defaultu onda preko funkcije za view!
+
+"input_wrapper" : "", "search_wrapper" : "",
+	no_show (otvara se na novoj stranici), 
+	show_only_form, (edit_form_key ima vrednost kljuca, ako je edit)
+	always_show (uvek je tu), 
+	show_hide, (otvara se po potrebi na istoj strani)
+	up_down, (otvara se po potrebi)
+	left_right	(otvara se po potrebi)
+
+	na kraju 
+	_with_button (ispod forme SHOW / HIDE button)
+	_with_add_button (na tabeli ADD+ ili SEARCH)
+
+
+-tableSettings -> 
+	css_table_class za dodavanje defaultn eklase za tu tabelu, da bi se posle lakse stilizovala dodatno u css
+		-moze po defaultu:  tableWithOneRowInColumn - za prikaz jednog reda u koloni
+	css_input_class
+		-moze po defaultu: in_line za prikaz svih u jednom redu
+	css_search_class
+		-
+
+opcije:
+ADD+
+	-nema buttona, nema forme 				"no_show"
+	-nema buttona, ima forme, nema tabele   "show_only_form"
+	-nema buttona, ima forme i tabele 		"show_form_with table"
+	-ima buttona:							
+		-pozicija buttona
+			-posle forme 					"pos_free"	
+			-na tabeli 						"pos_table"
+		-otvara link						..."_with_link"
+		-otvara na istoj strani 			
+			-show_hide preko svega			..."_show_hide"
+			-up_down i left_right otvara iznad ili ispod tabele  	..."_up_down" ili ..."left_right"
+	
+SEARCH
+	-nema buttona, nema forme
+	-nema buttona, ima forme (forma je stalno tu)
+	-ima buttona:
+		-nema kao link
+		-uvek otvara na istoj strani
+			-show_hide preko svega
+			-up_down i left_right otvara iznad ili ispod tabele
+	-pozicija buttona
+		-ispod forme
+		-na tabeli
+
+TIP STRANE:
+	-table ili form
+
+
+-searchFieldInputOptions sluzi ako komponenta koja sluzi za search ima dodatne opcije.
+npr jq_datepicker: search_opt sluzi da se zna da li je from ili to.
+
+
+-svaki field ima ime    table_field_ime
+	-tako da ako se tabela pravi po defaultu
+	svaki sql-field ima ime "table"+"_field_"+"ime iz table"
+
+
+
+-napravi primer kako da se boje polja?
+ 	-preko user-defined nove komponente
+
+===========================================================================
+tipovi iz SQL
+CHAR(size)
+VARCHAR(size)
+TINYTEXT
+TEXT
+MEDIUMTEXT
+LONGTEXT
+TINYBLOB
+MEDIUMBLOB
+BLOB
+LONGBLOB
+ENUM(x,y,z,etc.)
+
+TINYINT(size)
+SMALLINT(size)
+MEDIUMINT(size)
+INT(size)
+BIGINT(size)
+TINYINT	1	-128	127
+		0	255
+SMALLINT	2	-32768	32767
+		0	65535
+MEDIUMINT	3	-8388608	8388607
+		0	16777215
+INT	4	-2147483648	2147483647
+		0	4294967295
+BIGINT	8	-9223372036854775808	9223372036854775807
+
+
+
+FLOAT(size,d)
+DOUBLE(size,d)
+DECIMAL(size,d)
+BIT
+BOOLEAN
+SERIAL
+
+DATE()
+DATETIME()
+TIMESTAMP()
+TIME()
+YEAR()

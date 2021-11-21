@@ -1,0 +1,71 @@
+
+Ima 4 argumenta: ajaxCall( putanja, metoda, podaci, callback )
+
+Primer: ajaxCall('apijx/model/slider/table', 'GET', {}, function(odg){
+	console.log(odg);	
+});
+
+
+Putanja  (u primeru: 'apijx/model/slider/table')
+    Kao sto vidite postoje 4 stavke u putanji.
+    url za pozive uvek pocinje sa apijx/
+    Sledeci zavisi od dosta stvari, ali za vas je za sad uvek model/
+    Znaci za sad uvek imate apijx/model/
+    Zatim ide naziv tabele iz koje vam trebaju podaci  slider/  (pogledajte u bazi, mozete uzeti bilo koju tabelu.
+    I poslednja stavka je da li zelite celu tabelu pa ide table/ ili zelite samo jedan red tabele, a u tom slucaju ide :id.
+    Tako da cela tabela se dobija sa: 'apijx/model/slider/table'
+    A samo red sa id-jem 2 iz tabele slider:  'apijx/model/slider/:2'
+    Vežba: Probajte da dobijete sve podatke o userima. A potom samo jednog usera.
+
+Metoda moze biti GET, POST, PUT ili DELETE. Vama treba samo GET. Posto samo uzimate podatke
+
+Podaci (u primeru { }, prazan objekat) sluzi da posaljete dodatne podatke uz zahtev. Moze sadrzati koje redove zelite, koliko redova, koje kolone…  Ako ne posaljete nista, dobicete rezultate sa defaultnim vrednostima.
+Nazivi kolona neke tabele se pisu kao    <tabela>_field_<polje>
+Npr. slider_field_naziv predstavlja kolonu naziv iz tabele slider.
+    let data = {
+        selCols: ['slider_field_slika'],   //koje kolone. Ako se izostavi, sve kolone se dobijaju
+        orderBy: {slider_field_redosled: 'ASC'},    //polje za sortiranje, ako se navede vise, sortira se po redosledu nabrajanja
+        linesPerRequest: 2,  //broj redova da vrati, ako se izostavi, vraca max 50 redova. Ako se upise 0, onda vraca sve redove iz tabele.
+        pageNumber: 2,  //ako je max po strani 50 redova – 2 oznacava da vrati sve od 51-100.reda
+        whereCols: [   //za where u SQL. 
+                { colName: 'slider_field_naziv', colVal: '%a%', oper:'LIKE', logicOper: 'AND' },
+                { colName: 'slider_field_redosled', colVal: '3', oper:'<', logicOper: 'AND' }
+        ],  //ovo je za where u sql. 
+        whereCompGroup: ['3-4', '2-4']  //ako se u wherecols koriste zagrade. Vama nepotrebno.
+    }
+Ovo su sve moguce varijante, i ako koristite bilo sta od ovih opcija, onda se umesto { } kao 3.arg koristi data. Primer poziva:
+ajaxCall( ‘apijx/model/slider/table’, ‘GET’, data, function(){ … } )
+
+Vežba: Preko phpmyadmin, napravite u bazi bar dva usera ciji naziv pocinje slovom F (jednog vec imate) 
+Probajte da dobijete samo nazive usera koji pocinju na slovo F, sortiranih po pibu. 
+
+Za sad mozete dobiti odjednom podatke samo iz jedne tabele. Ako je potrebno iz dve, mozete 2 puta da pozovete ajaxCall (jedan unutar drugog), a ako je potreban mix podataka iz dve tabele, moracemo da se cujemo da napravim sql upit za ono sto vam treba (nije komplikovano).
+
+
+Callback fja sluzi da obradimo rezultate koje smo dobili sa servera (iz baze)
+Obavezno ima jedan ulazni argument – objekat (nazvan odg u primeru) koji sadrzi sve podatke koji su navedeni u requestu.
+Primer jednog dobijenog odgovora:
+    odg = {
+            OKERR: true,  //da li je zahtev vratio podatke. Ako nema redova za rezultate ili je doslo do greske na serveru ovo je false.
+            linesPerRequest: 50, (koliko max redova moze da vrati)
+            pageNumber: 0,  (broj strane)
+            total_lines: 3,  (broj redova koliko je odbijeno kao rezultat)
+            lines:[  //redovi iz baze. NAJBITNIJA STVAR
+            0:  { 
+            id: "1",slika: "slider1.jpg",naslov: "",tekst: "",tip: "glavni", redosled: "1"
+                    }, 
+            1: {id: "2", slika: "slider2.jpg", naslov: "", tekst: "", … },
+            2: {id: "3", slika: "slider3.jpg", naslov: "", tekst: "", … },
+            length: 3
+            ]
+            orderBy: {slider_field_id: "ASC"}, //polje po kojem je sortirano
+            searchBy: [], //polja iz whereCols
+            searchByGroups: [], //nepotrebno za sad
+            sql_query: "SELECT `slider`.`id`, `slider`.`slika`, `slider`.`naslov`, `slider`.`tekst`, `slider`.`tip`, `slider`.`redosled` FROM `slider` ORDER BY slider.id ASC", //sluzi samo za ispravljanje bugova
+    }
+
+Primer: ajaxCall('apijx/model/slider/table', 'GET', {}, function(odg){
+	console.log(odg);	
+});
+
+

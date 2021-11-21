@@ -1,0 +1,89 @@
+<?php 
+    //ako je admin
+    require_once 'server/main.php';  //vec je logovan, ne prijavljujes ga
+    session_start();
+    
+    // ako je klijent
+    session_start();
+    require_once 'admin/server/main.php';
+    $_REQUEST['path'] = 'apijx/regularUser';
+    
+    
+    // ako je excel
+    error_reporting(E_ERROR | E_PARSE);
+    ini_set('max_execution_time', 100);
+    require_once 'Classes/PHPExcel/IOFactory.php'; 
+    
+    
+    //SELECT
+      $_SERVER['REQUEST_METHOD'] = 'GET';
+	  $_SESSION['main']->userRequest['arrPath'] = ['apijx','model','users','table'];
+	  $_SESSION['main']->userRequest['body'] = array('whereCols'=>array());
+	  $_SESSION['main']->userRequest['body']['whereCols'][0] = array(
+	       'colName'=>'users_field_email', 'colVal'=>$email, 'oper'=>'LIKE', 'logicOper'=>'AND' 
+	  );
+	  $resp = $_SESSION['main']->execRequest($_SESSION['main']->userRequest['body'], $_SESSION['main']->userRequest['arrPath'] );
+	  die(json_encode($resp));
+
+    //  INSERT
+    $_SERVER['REQUEST_METHOD'] = 'POST';
+    $_SESSION['main']->userRequest['arrPath'] = ['apijx','model','proizvodi','input'];
+    $_SESSION['main']->userRequest['body'] = array('cols'=>array(), 'returnAffected'=>true);
+    $_SESSION['main']->userRequest['body']['cols']['proizvodi_field_Naziv'] = "Proizvod_1";
+    $_SESSION['main']->userRequest['body']['cols']['proizvodi_field_SlikaManja'] = 'slika.jph';
+    $_SESSION['main']->userRequest['body']['cols']['proizvodi_field_CenaSaPopustom'] = 200;
+    $_SESSION['main']->userRequest['body']['cols']['proizvodi_field_Popust'] = 0;
+    $resp = $_SESSION['main']->execRequest($_SESSION['main']->userRequest['body'], $_SESSION['main']->userRequest['arrPath'] );
+    
+
+    
+    // UPDATE
+    $_SERVER['REQUEST_METHOD'] = 'PUT';
+    $_SESSION['main']->userRequest['arrPath'][2] = "proizvodi";
+    //ako je kljuc za where:
+    $_SESSION['main']->userRequest['arrPath'][3] = ":".$p1;
+
+    $_SESSION['main']->userRequest['body'] = array(
+        // ako where nije kljuc
+        "whereCols" => [ [
+            "colName"=> 'proizvodi_field_Sifra', "colVal"=> $p1, 
+                "oper"=>'=', "logicOper"=> 'AND'
+        ] ],
+        //update kolone 
+        'cols'=>array("proizvodi_field_Kolicina" => $p2), 
+        'returnAffected'=>true
+    );
+    $resp = $_SESSION['main']->execRequest(
+        $_SESSION['main']->userRequest['body'], 
+        $_SESSION['main']->userRequest['arrPath'] 
+    );
+
+
+    // ODGOVOR
+    if($resp['OKERR'] == true){
+        echo " Red:".$i." OK<br/>";
+    }else{
+        echo " Red:".$i." LOS<br/>";
+
+    }
+
+
+
+    ILI
+    Direktan upit ako treba (insert, update, delete):
+    function upit($upit){
+        require_once 'server/config/configDB.php';  //moze ovo van f-je
+        
+		$kred = configDB()['sa'];
+		$db = mysqli_connect( 'localhost',  $kred['db_user'],  $kred['db_pass'],);
+		if(!$db){ echo json_encode(["OKERR"=> true, 'prikaz'=>'<h1>greska u povezivanju</h1>']); exit; }
+		mysqli_select_db($db, $kred['db_name']);
+		$db->set_charset("utf8");
+        
+        if (!mysqli_query($db, $upit)){
+            echo json_encode(["OKERR"=> true, 
+                'prikaz'=>'Greska: '.mysqli_error($db).'<br>'.$upit]);
+			return false;
+		}else return true;
+	}
+?>

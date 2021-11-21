@@ -1,0 +1,29 @@
+        "tableSettings": {
+			"allFieldsLabel": false,
+			"allFieldsRequired": true,
+			"tableWithInput": false,
+			"tableWithSearch": false,
+			"openTableAfterInput": true,
+			"css_table_class":"tableWithOneRowInColumn",
+			"tablePageNumbersPos": "header",
+			"_comment": "first, prev, next, last",
+			"pageNumbers": false,
+			"pageNumbersSide": [
+				true,
+				true,
+				true,
+				true
+			],
+			"resetSortButton": false,
+			"addNewButton": false,
+			"badFieldStar": true
+		},
+		"buttonsPerView": {
+			"input": [
+			],
+			"table": [
+				"save"
+			],
+			"search": [
+			]
+		},

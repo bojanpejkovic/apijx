@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/jquery/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="../js/socket.io.js"></script>
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../css/a_style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/furnix_style.css?v1" />
+
+        
+        <script type="text/javascript">                 
+            function tstQuery(){
+                var data = {  sqlQuery: "zivotinja_query" };
+                var that = this;
+                jinxPage.ajaxCall('apijx/sqlQuery', 'GET', data, function(getData){
+                    if(getData.OKERR == false){
+                        jinxPage.display('async resp from apijx/sqlQuery: '+jinxPage.json2str(getData));
+                        return;
+                    }
+                    jinxPage.display('DOBIO QUERY: '+jinxPage.json2str(getData.lines), 'red');
+                });
+            };
+            function tstQuery2(){
+                jinxPage.ajaxCall('apijx/sqlParamQuery/', 'GET', {sqlQuery:'korisnikCheck', whereCols:['admin', 'admin']}, function(a){
+                    console.log(a);
+                });
+            }
+            function tstQuery3(){
+                jinxPage.ajaxCall('apijx/sqlQuery/', 'GET', {sqlQuery:'brendGrupe', pageNumber:1, orderBy: 'KB.Ime ASC' }, function(a){
+                    console.log(a);
+                    console.log(a.lines);
+                });
+            }
+            function tstQuery4(){
+                jinxPage.ajaxCall('apijx/model/stavke_porudzbine/table', 'GET', {
+                    join:['porudzbine', ['stavke_porudzbine', 'cenovnik_fotografija', 1] ],
+                    selCols:['stavke_porudzbine_field_slika', 'porudzbine_field_tip_papira', 'stavke_porudzbine_field_cena','cenovnik_fotografija_field_cena'],
+                    whereCols:[
+                        {colName:'porudzbine_field_id', colVal:'10', oper:'=', logicOper:'AND'}
+                    ],
+                    orderBy:{stavke_porudzbine_field_slika: 'DESC'}
+                }
+                , function(a){
+                    alert();
+                    console.log(a);
+                    console.log(a.lines);
+                });
+            }
+            //
+            $(document).ready(function(){
+                //START check and create buttons for views that exists
+                //jinxPage.createAdminMainMenu($('div#mainMenu_wrapper'));
+                jinxPage.adminPageOpen($('div#mainMenu_wrapper'), $('div#smallMainMenu_wrapper'));
+
+                $('#showHideMM').on('click', function(){
+                    if($(this).attr('data-shown') == 'on'){
+                        $(this).attr('data-shown', 'off').prop('src', '../img/oc_r.png');
+                        $('#mainMenu_wrapper').stop().animate({ 'left': '-18%'}, 400);
+                        $('#admin_view').stop().animate({ 'left': '2%', 'width':'98%'}, 400);
+                    }else{
+                        $(this).attr('data-shown', 'on').prop('src', '../img/oc_l.png');
+                        $('#mainMenu_wrapper').stop().animate({ 'left': '0'}, 400);
+                        $('#admin_view').stop().animate({ 'left': '20%', 'width':'80%'}, 400);
+                    }
+                });
+
+                $('#tst').on('click', function(){
+                    // tstQuery4();
+                    jinxPage.reloadOneJsonTable();
+                }); 
+                $('#r_all').on('click', function(){
+                    jinxPage.ajaxCall('apijx/resetAll', 'GET', {}, function(resp1){
+                        if(resp1.OKERR == false){
+                            alert('jok')
+                        }else{
+                            window.location.reload();
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        <title>JINX ADMIN</title>
+    </head>
+    <body>
+        <div class="sa_error_log">
+            <img class="close_fixed_win toggle_sa_error_log" src="../img/close.png" alt="X" />
+            <div class="list"></div>
+        </div>
+        <div class="a_error_log">
+            <div class="list"></div>
+        </div>
+        <div class="wrapper">
+            <div id="mainMenu_wrapper">
+                <button id="reloadJSON">Reload json</button>
+                <button id="r_all">RELOAD ALL</button>
+                <button id="tst">Reload one table</button>
+                <img id="showHideMM" data-shown="on" src="../img/oc_l.png" alt="</>" />
+            </div>
+            <div id="smallMainMenu_wrapper"></div>
+            <img id="menuIcon" src="../img/menu.png" alt="menu" />
+            <div id="admin_view">
+                <!--<div id="sadrzaj_pozadina"></div>
+                <div id="sadrzaj_maska"></div>-->
+                <div id="admin_input_view" class="admin_input_view"></div>
+                <div id="admin_table_view" class="admin_table_view"></div>
+            </div>
+        </div>
+    </body>
+    
+        <script type="text/javascript" src="../js/adminpanel/jinx-page.js"></script>
+        <script type="text/javascript" src="../js/adminpanel/jinx-view.js"></script>
+        <script type="text/javascript" src="../js/adminpanel/jinx-field.js"></script>
+        <script type="text/javascript" src="../js/adminpanel/jinx-fns-default.js"></script>
+        
+</html>

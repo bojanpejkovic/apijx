@@ -1,0 +1,45 @@
+            function json2url(data, parent){
+				var str = '';
+				for(var key in data){
+					if(typeof data[key] === 'object'){
+						var p = (parent =='')? key : parent+'['+key+']';
+						str += json2url(data[key], p);
+					}else{
+						var k = encodeURIComponent(key);
+						var val = encodeURIComponent(data[key]);
+						str += (parent == '')? '&'+k+'='+val : '&'+parent+'['+k+']='+val;
+					}
+				}
+				return str;
+			}
+			var ajaxList = [];
+            function ajaxCallList(url, method, data, callback){
+                ajaxList.push({ url:url, method:method, data:data, callback:callback });
+                if(ajaxList.length > 1)  return;
+                ajaxCall(url, method, data, callback);
+            }
+            function ajaxCall(url, method, data, callback){   
+				var xhr = new XMLHttpRequest();
+				if(method === 'GET'){
+					var params = json2url(data, '');
+					if(params.trim() !== '')
+				    	url += '?'+params.substr(1);
+				}
+                xhr.open(method, url, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.onreadystatechange = function () {   
+                    if (xhr.readyState === 4){
+                        if(xhr.status === 200) {       
+                            if(callback && typeof callback === 'function')
+                                callback(xhr.responseText);  
+                        }else{
+                            if(callback && typeof callback === 'function')
+                                callback(false, xhr.status, xhr.responseText);  
+                        }
+                        ajaxList.shift();
+                        if(ajaxList.length > 0)
+                            ajaxCall( ajaxList[0].url, ajaxList[0].method, ajaxList[0].data, ajaxList[0].callback);
+                    }
+                };
+                xhr.send(JSON.stringify(data));
+            }

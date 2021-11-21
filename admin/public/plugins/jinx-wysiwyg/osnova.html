@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="jquery-ui/jquery-ui.min.js"></script>        
+        <script type="text/javascript" src="bau/upload_plugin.js"></script>
+        <script type="text/javascript" src="html_editor_plugin.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css" />
+        <link rel="stylesheet" type="text/css" href="bau/upload_plugin.css" />
+        <link rel="stylesheet" type="text/css" href="html_editor_plugin.css" />  
+		<script>
+
+            $(document).ready(function(){
+                var plugin1 = $('#plugin').html_editor({
+                    style :{
+                        'border': '1px sold #222222',
+                        'width': '800px',
+                        'height': '400px',
+                        'background-color': 'red'
+                    }
+                });    
+                var buttonGetHtmlCode = $(document.createElement('button'));
+                buttonGetHtmlCode.html('get HTML');
+                buttonGetHtmlCode.on('click', function(){
+                    alert( plugin1.getHtmlCode() );
+                });
+                $('#plugin').append(buttonGetHtmlCode);
+                
+                $('.setHtml').on('click', function(){
+                    plugin1.setHtmlCode('<p>UUUU JEEEE</p>');
+                });
+
+
+
+
+                var plugin2 = $('#plugin2').html_editor();   
+                var buttonGetHtmlCode2 = $(document.createElement('button'));
+                buttonGetHtmlCode2.html('get HTML');
+                buttonGetHtmlCode2.on('click', function(){
+                    alert( plugin2.getHtmlCode() );
+                });
+                $('#plugin2').append(buttonGetHtmlCode2);
+            });
+		</script>
+		
+		<style type="text/css">
+        body{
+            width:100%; height:100%;  text-align:center;
+        }
+		</style>
+		<title>Pejkovic</title>
+    </head>
+    <body>
+    	<div id="plugin" class="html_editor_plugin" ></div>
+        <button class="setHtml">SET</button>
+        <div id="plugin2" class="html_editor_plugin"></div>
+    </body>
+</html>

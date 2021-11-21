@@ -1,0 +1,174 @@
+	{
+		"jsonTableName": "chat",
+		"filename": "json/ocupio/chat.json",
+		"tableName": "chat",
+		"tableType": "BASE TABLE",
+		"types": [
+			"input",
+			"table",
+			"search"
+		],
+		"inputTitle": "DODAJ",
+		"searchTitle": "PRETRA\u017dI",
+		"tableTitle": "chat",
+		"linesPerRequest": 50,
+		"tableSettings": {
+			"allFieldsLabel": false,
+			"allFieldsRequired": true,
+			"tableWithInput": true,
+			"tableWithSearch": true,
+			"openTableAfterInput": true,
+			"tablePageNumbersPos": "header",
+			"_comment": "first, prev, next, last",
+			"pageNumbers": true,
+			"pageNumbersSide": [
+				true,
+				true,
+				true,
+				true
+			],
+			"resetSortButton": true,
+			"addNewButton": true,
+			"badFieldStar": true
+		},
+		"buttonsPerView": {
+			"input": [
+				"save",
+				"reset"
+			],
+			"table": [
+				"save",
+				"edit",
+				"reset",
+				"delete"
+			],
+			"search": [
+				"search",
+				"reset"
+			]
+		},
+		"fields": {
+			"chat_field_id": {
+				"name": "chat_field_id",
+				"restrictions": [
+					
+				],
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "id",
+				"sqlFieldName": "chat_field_id",
+				"inputView": "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "label",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"chat_field_noOfUsers": {
+				"name": "chat_field_noOfUsers",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "noOfUsers",
+				"sqlFieldName": "chat_field_noOfUsers",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"chat_field_type": {
+				"name": "chat_field_type",
+				"restrictions": {
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "type",
+				"sqlFieldName": "chat_field_type",
+				"inputView": "DEFAULT",
+				"inputViewType": "select",
+				"tableView": "DEFAULT",
+				"tableViewType": "select",
+				"searchView": "DEFAULT",
+				"searchViewType": "select",
+				"type": "select",
+				"sortCol": true,
+				"listValues": {
+					"private'": "private'",
+					"public')": "public')"
+				}
+			},
+			"chat_field_subject": {
+				"name": "chat_field_subject",
+				"restrictions": {
+					"len": "<=100",
+					"notEmpty": true
+				},
+				"attrList": {
+					"maxlength": "100"
+				},
+				"labelLng": false,
+				"label": "subject",
+				"sqlFieldName": "chat_field_subject",
+				"inputView": "DEFAULT",
+				"inputViewType": "input",
+				"tableView": "DEFAULT",
+				"tableViewType": "input",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"type": "text-short",
+				"sortCol": true
+			}
+		},
+		"callbackFns": {
+			"afterInsert": "",
+			"afterUpdate": "",
+			"afterDelete": "",
+			"afterHtmlTable": ""
+		},
+		"orderBy": {
+			"inputOrder": [
+				"chat_field_id",
+				"chat_field_noOfUsers",
+				"chat_field_type",
+				"chat_field_subject"
+			],
+			"tableOrder": [
+				"chat_field_id",
+				"chat_field_noOfUsers",
+				"chat_field_type",
+				"chat_field_subject"
+			],
+			"searchOrder": [
+				"chat_field_id",
+				"chat_field_noOfUsers",
+				"chat_field_type",
+				"chat_field_subject"
+			],
+			"sortOrder": {
+				"chat_field_id": "ASC"
+			},
+			"primKeyOrder": [
+				"chat_field_id"
+			],
+			"searchDefaultVal": {
+				"no_sql": ""
+			}
+		}
+	}

@@ -1,0 +1,13 @@
+1.
+"nekiUpit": {
+	"sqlQuery": "(SELECT * FROM (--groupids--) (--status_id--))"
+}
+
+2.
+let resp = await promiseAjaxCall("apijx/sqlQuery", "GET", { 
+    sqlQuery:"allEvents",
+    replaceAsString:[
+        ['(--groupids--)', gr],
+        ['(--status_id--)', sgn]
+    ]
+});

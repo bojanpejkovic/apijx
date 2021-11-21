@@ -1,0 +1,8 @@
+1. copy paste admin folder
+2. htacces izmeni putanju
+3. izbrisi configDB i  configTables
+4. napravi admina
+5. configDB - upisi:
+	admin admin
+	regular regular
+6. loguj se kao admin i radi

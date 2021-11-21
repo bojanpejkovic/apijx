@@ -1,0 +1,312 @@
+
+body{
+    width:100%; height:100%;
+    overflow: scroll; 
+    font-family:sanspro;
+    background:rgb(230,230,230);
+}
+    
+    .hidden_element{ display:none; }
+    
+    .page_link:hover, img.arr_order_by:hover{
+        cursor:pointer;
+        background-color: #99CCFF;
+    }
+    .arr_order_by_mark{ background-color: rgb(246, 130, 122); }
+
+    #sql_wrapper, #table_page_buttons, #admin_view{ 
+        border:3px solid black; padding:1em; margin-top: 1em;
+        overflow: scroll;
+    }
+        h1{ 
+            font-size: 150%; line-height: 2em; text-align: center; color:black;
+        }
+        #jinx_db_tables, #jinx_db_fields, #jinx_view_meni, #jinx_db_desc{ 
+            position: relative; float: left; width: 150px; height:8em; 
+            overflow-y:scroll; border:1px solid black; padding:5px;
+            background-color: white; margin-right: 1em;
+        }
+        #jinx_view_meni{  width: 450px; height:15em;  }
+        #jinx_db_fields li{ display: none; }
+        #jinx_db_tables li, #jinx_db_fields li{ font-size: 110%; }
+        #jinx_db_tables li:hover, #jinx_db_fields li:hover, #jinx_view_meni li:hover{ cursor: pointer; text-decoration: underline;}
+        #jinx_db_tables li.selected, #jinx_db_fields li.selected, #jinx_view_meni li.selected{ 
+            text-decoration: underline; color:#EFEFEF; background-color: #232323;
+        }
+        .jinx_db_buttons{ float:left; margin-right: 1em; }
+        .jinx_db_buttons li.right_align{ float:right; }
+        #json_file{ height:20em; width: 500px;}
+
+
+    #json_edit, #field_edit{ 
+        display:none; position:fixed; left:30%; top:5em; 
+        border:2px solid black; background: rgb(230,230,230); 
+        padding:1em; padding-right:1.5em;
+        z-index:1000; box-shadow: 5px 5px 5px black;
+    }
+        .close_fixed_win{ 
+            position: absolute; right:0.5em; top:0.5em; height:1em; width:auto;
+            border:1px solid red; color:red;
+        }
+        .close_fixed_win:hover{ font-weight: bold; cursor: pointer;}
+        #json_file{ 
+            width:80ch; height:20em;
+        }
+
+
+    img.arr_order_by{ height:1em; }
+
+    .page_link{ color:blue; }
+    .page_link_mark{ font-size: 120%; font-weight:bold; }
+
+    .badField, .reqField{ display:none; color:red;}
+    /*.showReqField .reqField, .showBadField .badField{ display: inline-block;}
+    .showBadField[data-jinx-fname-bad]{ display: inline-block; }
+    .showReqField[data-jinx-fname-req]{ display: inline-block; }
+    */
+    input.showBadField, .showBadField input{ 
+        -webkit-box-shadow: 0px 0px 4px red;
+       -moz-box-shadow: 0px 0px 4px red;
+        box-shadow: 0px 0px 4px red; 
+    }
+
+    
+    .sa_error_log{ 
+        position:fixed; right:20px; top:20px; width:25%; height:40%; 
+        border:2px solid #445599;
+        background-color: white; padding:2%; z-index:1000;
+    }
+        .hideSaErrorLog{ width:0; height:0; }
+        .hideSaErrorLog:hover{ cursor: pointer;}
+        .sa_error_log div.list{ 
+            position:relative; margin-top: 1em; height:90%;
+            overflow-y:scroll;  
+        }
+
+
+    .a_error_log{
+        display:none; position:fixed; right:20px; top:20px; width:20%; 
+        border:2px solid #832811; background-color: white; padding:4%; z-index:1001;
+    }
+        .a_error_log p{ padding-top:0.5em; }
+
+    button{display:inline;}
+
+    .jinxTime{ display: inline;}
+
+    td,th{padding-left: 1ch; padding-right: 1ch;}
+
+a{ text-decoration:none; }
+
+.wrapper{
+    padding:2em;
+}
+
+#json_edit:hover{ cursor: move;}
+
+        .jinxTable {
+                display: table;
+                border:2px solid black;
+        }
+        .jinxTableRow {
+                display: table-row;
+        }
+        .jinxTableHeading {
+                display: table-header-group;
+                background-color: #ddd;
+                font-weight: bold;
+        }
+        .jinxTableFoot {
+                display: table-footer-group;
+                font-weight: bold;
+                background-color: #ddd;
+        }
+        .jinxTableColspan{
+                display: table-caption;
+                background-color: #ddd;
+                font-weight: bold;
+                padding: 8px;
+                padding-left: 40px;
+        }
+        .jinxTableCaptionBottom{
+            caption-side: bottom;
+        }
+        .jinxTableCell, .jinxTableHead {
+                display: table-cell;
+                padding: 2px;
+                padding-left:2px; padding-right:5px;
+                border: 1px solid #999999;
+                white-space:nowrap;
+        }
+        .jinxTableEmptyCell{
+            line-height: 1em; visibility: hidden;
+        }
+        .jinxTableBody {
+                display: table-row-group;
+        }
+
+    .jinxBtn {
+        background: #3498db;
+        background-image: -webkit-linear-gradient(top, #3498db, #1b638f);
+        background-image: -moz-linear-gradient(top, #3498db, #1b638f);
+        background-image: -ms-linear-gradient(top, #3498db, #1b638f);
+        background-image: -o-linear-gradient(top, #3498db, #1b638f);
+        background-image: linear-gradient(to bottom, #3498db, #1b638f);
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        border:1px solid black;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 77%;
+        padding: 0.2em 0.7em 0.2em 0.7em;
+        text-decoration: none;
+        margin-left: 0.2em; margin-top: 0.2em; margin-bottom: 0.2em;  margin-right: 0.1em;
+        line-height: 1.5em;
+    }
+
+    .jinxBtn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
+
+    /*******************************************************************************
+    ***
+    ***  RED
+    ***
+    *******************************************************************************
+        .jinxTable {
+                border:2px solid #444444;
+        }
+        .jinxTableHeading {
+                background-color: #A40808;
+        }
+        .jinxTableFoot {
+                background-color: #A40808;
+        }
+        .jinxTableColspan{
+                background-color: #A40808;
+                font-family: sanspro;
+        }
+        .jinxTableCell, .jinxTableHead {
+                border: 1px solid #444444;
+        }
+        .jinxTableHead {color:white; }
+        .jinxTable .jinxTableRow:nth-child(even) {background: #F5C8BF;}
+        .jinxTable .jinxTableRow:nth-child(odd) {background: #EEE7DB;}
+        .jinxTable .jinxTableRow:nth-child(even) input, .jinxTable .jinxTableRow:nth-child(even) textarea, .jinxTable .jinxTableRow:nth-child(even) select{
+            color:#333; border:1px solid #aaa;
+        }
+        .jinxTable .jinxTableRow:nth-child(odd) input, .jinxTable .jinxTableRow:nth-child(odd) textarea, .jinxTable .jinxTableRow:nth-child(odd) select{
+            color: #333; border: 1px solid #aaa;
+        }
+
+
+    .jinxBtn {
+        position:relative;
+        background: #bd484c;
+        background-image: -webkit-linear-gradient(top, #bd484c, #7d3032);
+        background-image: -moz-linear-gradient(top, #bd484c, #7d3032);
+        background-image: -ms-linear-gradient(top, #bd484c, #7d3032);
+        background-image: -o-linear-gradient(top, #bd484c, #7d3032);
+        background-image: linear-gradient(to bottom, #bd484c, #7d3032);
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        border:1px solid black;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 77%;
+        padding: 0.2em 0.7em 0.2em 0.7em;
+        text-decoration: none;
+        margin-left: 0.2em; margin-top: 0.2em; margin-bottom: 0.2em;  margin-right: 0.1em;
+        line-height: 1.5em;
+    }
+
+    .jinxBtn:hover {
+        background: #ca4d51;
+        background-image: -webkit-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: -moz-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: -ms-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: -o-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: linear-gradient(to bottom, #ca4d51, #bd484c);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+
+    /*******************************************************************************
+    ***
+    ***  Green
+    ***
+    ******************************************************************************
+        .jinxTable {
+                border:2px solid #444444;
+        }
+        .jinxTableHeading {
+                background-color: #57aa3c;
+        }
+        .jinxTableFoot {
+                background-color: #57aa3c;
+        }
+        .jinxTableColspan{
+                background-color: #57aa3c;
+                font-family: sanspro;
+        }
+        .jinxTableCell, .jinxTableHead {
+                border: 1px solid #444444;
+        }
+        .jinxTableHead {color:white; }
+        .jinxTable .jinxTableRow:nth-child(even) {background: #8ce058;}
+        .jinxTable .jinxTableRow:nth-child(odd) {background: #caf5a6;}
+        .jinxTable .jinxTableRow:nth-child(even) input, .jinxTable .jinxTableRow:nth-child(even) textarea, .jinxTable .jinxTableRow:nth-child(even) select{
+            color:#333; border:1px solid #aaa;
+        }
+        .jinxTable .jinxTableRow:nth-child(odd) input, .jinxTable .jinxTableRow:nth-child(odd) textarea, .jinxTable .jinxTableRow:nth-child(odd) select{
+            color: #333; border: 1px solid #aaa; 
+        }
+
+    .jinxBtn {
+       background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+        background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+        background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+        background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+        background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+        background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6',GradientType=0);
+        background-color:#eae0c2;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        border:1px solid black;
+        font-family: Arial;
+        color: #333;
+        font-size: 77%;
+        padding: 0.2em 0.7em 0.2em 0.7em;
+        text-decoration: none;
+        margin-left: 0.2em; margin-top: 0.2em; margin-bottom: 0.2em;  margin-right: 0.1em;
+        line-height: 1.5em;
+        text-decoration:none;
+        
+    }
+    .jinxBtn:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ccc2a6), color-stop(1, #eae0c2));
+        background:-moz-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+        background:-webkit-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+        background:-o-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+        background:-ms-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+        background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccc2a6', endColorstr='#eae0c2',GradientType=0);
+        background-color:#ccc2a6;
+    }
+    .jinxBtn:active {
+        position:relative;
+        top:1px;
+    }
+*/

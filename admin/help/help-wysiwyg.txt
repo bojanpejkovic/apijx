@@ -1,0 +1,22 @@
+Sa opcijom:
+1. configTables.json:  (novi element)
+        "wysText":{
+				"jsSrc": [
+					"plugins/jquery-ui/jquery-ui.min.js",
+					"plugins/jinx-wysiwyg/bau/upload_plugin.js",
+					"plugins/jinx-wysiwyg/html_editor_plugin.js?v1"
+				],
+				"cssSrc": [
+					"plugins/jquery-ui/jquery-ui.css",
+					"plugins/jquery-ui/jquery-ui.theme.css",
+					"plugins/jinx-wysiwyg/html_editor_plugin.css?v1"
+				],
+				"async": false
+			}
+
+2. 
+jinxFn.wysText = jinxFn.wysiwygFn({ img_path:'slike/tekstovi/' });
+ili 
+jinxFn.wysTextBlog = jinxFn.wysiwygFn({ img_path:'img/blog/',buttons_arr:{buttonImage: ""}, height:'300px', width:'600px' });
+
+3. NEW-ELEMENT wysText

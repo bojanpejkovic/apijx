@@ -1,0 +1,26 @@
+form.jinx_wys_upload_browse { display:inline-block; }
+.jinx_wys_upload_browse input[type="file"]{ 
+        width: 80px; height: 2em; overflow: hidden; 
+        background: none; vertical-align: middle;
+        border:0px;
+    }
+    .jinx_wys_upload_browse input[type="submit"], .jinx_wys_upload_browse input[type="text"]{ display:none; background-color:none; }
+    .jinx_wys_upload_browse input.katalog_ime[type="text"]{ display:block; }
+    .jinx_wys_upload_browse .form_output{
+        position:relative; width:220px; height:2em; line-height:1em; display:none;
+    }
+    .jinx_wys_upload_browse .form_output .loading_gif{ display:inline-block; height:1.6em; margin-top:0.2em; margin-left:0.4em; }
+    .jinx_wys_upload_browse .form_output .cancelUpload{ display:inline-block; vertical-align: middle; }
+    .jinx_wys_upload_browse .form_output .progressbar_wrapper{ 
+            position:relative; width:100px; height:1em; border:1px solid gray; background-color:rgb(159, 225, 148);
+            display:inline-block;
+        }
+        .jinx_wys_upload_browse .form_output .progressbar_wrapper .progressbar{ 
+                position:relative; width:100%; height:1em; display:block; float:right; background-color:rgb(240, 206, 178);
+            }
+            .jinx_wys_upload_browse p.wait{ font-size:85%;}
+            .jinx_wys_upload_browse .img_thumbnail{ 
+                display: inline-block; width:200px; height:auto; max-height:400px; 
+                vertical-align: middle;
+            }
+

@@ -1,0 +1,123 @@
+	{
+		"jsonTableName": "languages",
+		"filename": "json/ocupio/languages.json",
+		"tableName": "languages",
+		"tableType": "BASE TABLE",
+		"types": [
+			"input",
+			"table",
+			"search"
+		],
+		"inputTitle": "DODAJ",
+		"searchTitle": "PRETRA\u017dI",
+		"tableTitle": "languages",
+		"linesPerRequest": 50,
+		"tableSettings": {
+			"allFieldsLabel": false,
+			"allFieldsRequired": true,
+			"tableWithInput": true,
+			"tableWithSearch": true,
+			"openTableAfterInput": true,
+			"tablePageNumbersPos": "header",
+			"_comment": "first, prev, next, last",
+			"pageNumbers": true,
+			"pageNumbersSide": [
+				true,
+				true,
+				true,
+				true
+			],
+			"resetSortButton": true,
+			"addNewButton": true,
+			"badFieldStar": true
+		},
+		"buttonsPerView": {
+			"input": [
+				"save",
+				"reset"
+			],
+			"table": [
+				"save",
+				"edit",
+				"reset",
+				"delete"
+			],
+			"search": [
+				"search",
+				"reset"
+			]
+		},
+		"fields": {
+			"languages_field_id": {
+				"name": "languages_field_id",
+				"restrictions": {
+					"len": "<=2",
+					"notEmpty": true
+				},
+				"attrList": {
+					"maxlength": "2"
+				},
+				"labelLng": false,
+				"label": "id",
+				"sqlFieldName": "languages_field_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "input",
+				"tableView": "DEFAULT",
+				"tableViewType": "input",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"type": "text-short",
+				"sortCol": true
+			},
+			"languages_field_name": {
+				"name": "languages_field_name",
+				"restrictions": {
+					"len": "<=30",
+					"notEmpty": true
+				},
+				"attrList": {
+					"maxlength": "30"
+				},
+				"labelLng": false,
+				"label": "name",
+				"sqlFieldName": "languages_field_name",
+				"inputView": "DEFAULT",
+				"inputViewType": "input",
+				"tableView": "DEFAULT",
+				"tableViewType": "input",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"type": "text-short",
+				"sortCol": true
+			}
+		},
+		"callbackFns": {
+			"afterInsert": "",
+			"afterUpdate": "",
+			"afterDelete": "",
+			"afterHtmlTable": ""
+		},
+		"orderBy": {
+			"inputOrder": [
+				"languages_field_id",
+				"languages_field_name"
+			],
+			"tableOrder": [
+				"languages_field_id",
+				"languages_field_name"
+			],
+			"searchOrder": [
+				"languages_field_id",
+				"languages_field_name"
+			],
+			"sortOrder": {
+				"languages_field_id": "ASC"
+			},
+			"primKeyOrder": [
+				"languages_field_id"
+			],
+			"searchDefaultVal": {
+				"no_sql": ""
+			}
+		}
+	}

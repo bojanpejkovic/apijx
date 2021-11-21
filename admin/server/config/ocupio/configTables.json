@@ -1,0 +1,681 @@
+	{
+		"allowedTypeForDEFAULT": [
+			"radiogroup",
+			"radio",
+			"label",
+			"input",
+			"password",
+			"textarea",
+			"number",
+			"checkbox",
+			"select"
+		],
+		"_comment": "this is inputViewType or searchViewType or tableViewType",
+		"newElementsDef": {
+			"browseAndUpload": {
+				"jsSrc": [
+					"plugins/browse_and_upload_moj/jquery.form.min.js",
+					"plugins/browse_and_upload_moj/upload_plugin.js?v14"
+				],
+				"cssSrc": [
+					"plugins/browse_and_upload_moj/upload_plugin.css?v4"
+				],
+				"async": false
+			},
+			"jqDatePicker": {
+				"jsSrc": [
+					"plugins/jquery-ui/jquery-ui.min.js"
+				],
+				"cssSrc": [
+					"plugins/jquery-ui/jquery-ui.css",
+					"plugins/jquery-ui/jquery-ui.theme.css"
+				],
+				"async": false
+			},
+			"jinxTimePicker": {
+				"jsSrc": [
+					"plugins/time-picker/jinx_time_plugin.js"
+				],
+				"cssSrc": [
+					
+				],
+				"async": false
+			},
+			"jinxPassword": {
+				"jsSrc": [
+					"plugins/jinx-password/jinx_password.js"
+				],
+				"cssSrc": [
+					
+				],
+				"async": false
+			},
+			"colorPicker": {
+				"jsSrc": [
+					"plugins/color-picker/colpick.js"
+				],
+				"cssSrc": [
+					"plugins/color-picker/colpick.css"
+				],
+				"async": false
+			},
+			"wysiwyg": {
+				"jsSrc": [
+					"plugins/jquery-ui/jquery-ui.min.js",
+					"plugins/jinx-wysiwyg/bau/upload_plugin.js",
+					"plugins/jinx-wysiwyg/html_editor_plugin.js?v1"
+				],
+				"cssSrc": [
+					"plugins/jquery-ui/jquery-ui.css",
+					"plugins/jquery-ui/jquery-ui.theme.css",
+					"plugins/jinx-wysiwyg/html_editor_plugin.css?v1"
+				],
+				"async": false
+			},
+			"shortLabel": {
+				"jsSrc": [
+					
+				],
+				"cssSrc": [
+					
+				],
+				"async": false
+			},
+			"inputSearchAll": {
+				"jsSrc": [
+					
+				],
+				"cssSrc": [
+					
+				],
+				"async": false
+			},
+			"distinctGalFolder": {
+				"jsSrc": [
+					
+				],
+				"cssSrc": [
+					
+				],
+				"async": true
+			},
+			"selectDANE": {
+				"jsSrc": [
+					
+				],
+				"cssSrc": [
+					
+				],
+				"async": false
+			}
+		},
+		"adminTypes": {
+			"admin": {
+				"db_val": "1"
+			}
+		},
+		"usersTable": {
+			"create": "",
+			"type": "db",
+			"table_name": "users",
+			"col_user": "email",
+			"col_pass": "pass",
+			"col_type": "",
+            "loginQuery": "userCheck",
+            "logoutQuery": "logoutUser"
+		},
+		"adminSettings": {
+			"allowed": {
+				"queries": [
+					"userCheck",
+                    "selectUsers",
+					"userReg1",
+					"userReg1Upd",
+					"userReg2Upd",
+					"userPassUpd",
+					"userPayGroupUpd",
+					"userEmailConfirmed",
+					"userData",
+					"userLogData",
+					"meetingAttPerUser",
+					"meetingAttPerGroup",
+					"allEvents",
+					"chatUsersSortByLastMsg",
+                    "allEventsBoards",
+                    "allEventsBoardMessages",
+                    "allEventsBoardMessages2",
+                    "allEventsGroups",
+                    "allEventsGroupMembers",
+                    "checkBoardUser",
+                    "checkBoardMsgUser",
+                    "checkGroupUser",
+                    "checkChatUser"
+				],
+				"board_messages": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"boards": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"chat": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"chat_messages": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"group_a": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"group_categories": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"group_q": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"group_users": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"groups": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"languages": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"pay_groups": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"users": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"meetings": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"meeting_users": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"login": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"chat_users": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"vremena": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"stripe_status": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"admin_grades": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				],
+				"files": [
+					"GET",
+					"POST",
+					"PUT",
+					"DELETE"
+				]
+			},
+			"mainMenu": {
+				"board_messages": {
+					"viewName": "board_messages",
+					"label": "Board_messages"
+				},
+				"boards": {
+					"viewName": "boards",
+					"label": "Boards"
+				},
+				"chat": {
+					"viewName": "chat",
+					"label": "Chat"
+				},
+				"chat_messages": {
+					"viewName": "chat_messages",
+					"label": "Chat_messages"
+				},
+				"group_a": {
+					"viewName": "group_a",
+					"label": "Group_a"
+				},
+				"group_categories": {
+					"viewName": "group_categories",
+					"label": "Group_categories"
+				},
+				"group_q": {
+					"viewName": "group_q",
+					"label": "Group_q"
+				},
+				"group_users": {
+					"viewName": "group_users",
+					"label": "Group_users"
+				},
+				"groups": {
+					"viewName": "groups",
+					"label": "Groups"
+				},
+				"languages": {
+					"viewName": "languages",
+					"label": "Languages"
+				},
+				"pay_groups": {
+					"viewName": "pay_groups",
+					"label": "Pay_groups"
+				},
+				"users": {
+					"viewName": "users",
+					"label": "Users"
+				},
+				"meetings": {
+					"viewName": "meetings",
+					"label": "Meetings"
+				},
+				"meeting_users": {
+					"viewName": "meeting_users",
+					"label": "Meeting_users"
+				},
+				"login": {
+					"viewName": "login",
+					"label": "Login"
+				},
+				"chat_users": {
+					"viewName": "chat_users",
+					"label": "Chat_users"
+				},
+				"vremena": {
+					"viewName": "vremena",
+					"label": "Vremena"
+				}
+			}
+		},
+		"regularSettings": {
+			"allowed": {
+				"queries": [
+					"userCheck",
+                    "selectUsers",
+                    "logoutUser",
+					"userReg1",
+					"userReg1Upd",
+					"userReg2Upd",
+					"userPassUpd",
+					"userPayGroupUpd",
+					"userEmailConfirmed",
+					"userData",
+					"userLogData",
+					"meetingAttPerUser",
+					"meetingAttPerGroup",
+					"allEvents",
+					"chatUsersSortByLastMsg",
+                    "allEventsBoards",
+                    "allEventsBoardMessages",
+                    "allEventsBoardMessages2",
+                    "allEventsGroups",
+                    "allEventsGroupMembers",
+                    "checkBoardUser",
+                    "checkBoardMsgUser",
+                    "checkBoardRegAdminMsgUser",
+                    "checkBoardDel",
+                    "checkGroupUser",
+                    "checkChatUser",
+                    "checkChatMsgUser",
+                    "checkChatUser_forPost",
+                    "checkGroupQChange",
+                    "checkGroupADel",
+                    "checkMeetingUser",
+                    "allEventsBoards",
+                    "allEventsBoardMessage",
+                    "allEventsGroups", 
+                    "allEventsGroupMembers",
+                    "allEventsMeetings"
+				],
+				"board_messages": {
+                    "GET": {
+                        "reqFields":["board_messages_field_board_id", "userAppId"],
+                        "checkParamQuery":{ 
+                            "sqlQuery":"checkBoardUser", 
+                            "whereCols":["board_messages_field_board_id", ""]
+                        }
+                    },
+                    "POST": {
+                        "reqFields":["board_messages_field_board_id", "board_messages_field_user_id", "board_messages_field_message", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{ 
+                            "sqlQuery":"checkBoardUser", 
+                            "whereCols":["board_messages_field_board_id", ""]
+                        }
+                    },
+                    "PUT":{
+                        "reqFields":["board_messages_field_id", "board_messages_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkBoardMsgUser", 
+                            "whereCols":["board_messages_field_id", ""]
+                        }
+                    },
+                    "DELETE":{
+                        "reqFields":["board_messages_field_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkBoardRegAdminMsgUser", 
+                            "whereCols":["board_messages_field_id", "", ""]
+                        }
+                    }
+                },
+				"boards": {
+                    "GET":{
+                        "reqFields":["userAppId"],
+                        "userDefFn":["check_get_userAppID"]
+                    },
+					"POST":{
+                        "reqFields":["boards_field_group_id", "boards_field_creator_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupUser", 
+                            "whereCols":["boards_field_group_id", "", 1]
+                        }
+                    },
+                    "DELETE":{
+                        "reqFields":["boards_field_id", "boards_field_creator_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkBoardDel", 
+                            "whereCols":["boards_field_id", ""]
+                        }
+                    }
+                },
+				"chat": {
+                    "GET":{},
+                    "POST":{},
+                    "PUT":{
+                        "reqFields":["chat_field_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatUser", 
+                            "whereCols":["chat_field_id", "", 2]
+                        }
+                    },
+                    "DELETE":{
+                        "reqFields":["chat_field_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatUser", 
+                            "whereCols":["chat_field_id", "", 2]
+                        }
+                    }
+                },
+				"chat_messages": {
+					"GET":{
+                        "reqFields":["chat_messages_field_chat_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatUser", 
+                            "whereCols":["chat_messages_field_chat_id", "", 1]
+                        }
+                    },
+					"POST":{
+                        "reqFields":["chat_messages_field_chat_id","chat_messages_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatUser", 
+                            "whereCols":["chat_messages_field_chat_id", "", 1]
+                        }
+                    },
+                    "PUT":{
+                        "reqFields":["chat_messages_field_id", "chat_messages_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatMsgUser", 
+                            "whereCols":["chat_messages_field_id", ""]
+                        }
+                    },
+                    "DELETE":{
+                        "reqFields":["chat_messages_field_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatMsgUser", 
+                            "whereCols":["chat_messages_field_id", ""]
+                        }
+                    }
+                },
+                "chat_users": {
+                    "GET":{
+                        "reqFields":["userAppId"]
+                    }, 
+					"POST":{
+                        "reqFields":["chat_users_field_chat_id", "chat_users_field_user_id", "userAppId"],
+                        "checkParamQuery":{ 
+                            "sqlQuery":"checkChatUser_forPost", 
+                        "whereCols":["chat_users_field_chat_id", "chat_users_field_user_id", "chat_users_field_user_id", "chat_users_field_chat_id", "userAppId", "chat_users_field_chat_id"]
+                        }
+                    },
+					"PUT":{
+                        "reqFields":["chat_users_field_chat_id", "chat_users_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatUser", 
+                            "whereCols":["chat_users_field_chat_id", "", 0]
+                        }
+                    },
+					"DELETE":{
+                        "reqFields":["chat_users_field_chat_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkChatUser", 
+                            "whereCols":["chat_users_field_chat_id", "", 1]
+                        }
+                    } 
+                },
+				"group_a": {
+					"GET":{},
+					"POST":{
+                        "reqFields":["group_a_field_group_q_id", "group_a_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"]
+                    },
+                    "DELETE":{}
+                },
+				"group_categories": {
+					"GET":{}
+                },
+				"group_q": {
+					"GET":{},
+					"POST":{
+                        "reqFields":["group_q_field_group_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupUser", 
+                            "whereCols":["group_q_field_group_id", "", 2]
+                        }
+                    },
+					"PUT":{
+                        "reqFields":["group_q_field_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupQChange", 
+                            "whereCols":["group_q_field_id", "", 2]
+                        }
+                    },
+					"DELETE":{
+                        "reqFields":["group_q_field_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupQChange", 
+                            "whereCols":["group_q_field_id", "", 2]
+                        }
+                    }
+                },
+				"group_users": {
+					"GET":{},
+					"POST":{
+                        "reqFields":["group_users_field_group_id", "group_users_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID", "check_group_users_post"]
+                    },
+					"PUT":{
+                        "reqFields":["group_users_field_group_id", "group_users_field_user_id", "userAppId"],
+                        "userDefFn":["check_group_users_put"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupADel", 
+                            "whereCols":["group_users_field_group_id", "", 0]
+                        }
+                    },
+					"DELETE":{
+                        "reqFields":["group_users_field_group_id", "group_users_field_user_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupUser", 
+                            "whereCols":["group_users_field_group_id", "", 2]
+                        }
+                    } 
+                },
+				"groups": {
+					"GET":{},
+					"POST":{},
+					"PUT":{
+                        "reqFields":["groups_field_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupUser", 
+                            "whereCols":["groups_field_id", "", 2]
+                        }
+                    }
+                },
+
+
+				"languages": [
+					"GET",
+                    "POST"
+                ],
+				"pay_groups": [
+					"GET"
+				],
+				"meetings": {
+					"GET":{},
+					"POST":{
+                        "reqFields":["meetings_field_group_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGroupUser", 
+                            "whereCols":["meetings_field_group_id", "", 2]
+                        }
+                    },
+					"PUT":{
+                        "reqFields":["meetings_field_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkMeetingUser", 
+                            "whereCols":["meetings_field_id", "", 2]
+                        }
+                    }
+                },
+				"meeting_users": {
+					"GET":{},
+					"POST":{
+                        "reqFields":["meeting_users_field_meeting_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkMeetingUser", 
+                            "whereCols":["meeting_users_field_meeting_id", "", 2]
+                        }
+                    },
+                    "PUT":{
+                        "reqFields":["meeting_users_field_meeting_id", "userAppId"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkMeetingUser", 
+                            "whereCols":["meeting_users_field_meeting_id", "", 2]
+                        }
+                    },
+					"DELETE":{}
+                },
+				"login": {
+					"GET":{
+                        "reqFields":["login_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"]
+                    },
+					"POST":{
+                        "reqFields":["login_field_user_id"]
+                    },
+					"PUT":{
+                        "reqFields":["login_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"]
+                    }
+                },
+				
+				"stripe_status": {
+					"GET":{}
+                },
+				"admin_grades": {
+					"GET":{},
+					"POST":{
+                        "reqFields":["admin_grades_field_user_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"]
+                    },
+					"PUT":{
+                        "reqFields":["admin_grades_field_id", "userAppId"],
+                        "userDefFn":["check_get_userAppID"],
+                        "checkParamQuery":{
+                            "sqlQuery":"checkGradeUser", 
+                            "whereCols":["meeting_users_field_meeting_id", "", 1]
+                        }
+                    },
+					"DELETE":{}
+                },
+				"files": {
+					"GET":{
+                        
+                    },
+                    "POST":{
+                        
+                    },
+                    "DELETE":{
+                        
+                    }
+                }
+			}
+		}
+	}

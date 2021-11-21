@@ -1,0 +1,23 @@
+iframe.document.designMode = 'On';
+
+iframe.document.execCommand('bold', false, null);
+
+iframe.document.execCommand('underline', false, null);
+
+iframe.document.execCommand('italic', false, null);
+
+iframe.document.execCommand('FontSize', false, size);
+
+iframe.document.execCommand('ForeColor', false, color);
+
+iframe.document.execCommand('InsertOrderedList', false, "newOL"); //name je newOL
+
+iframe.document.execCommand('CreateLink', false, link);
+
+iframe.document.execCommand('insertimage', false, imgSrc);
+
+http://codepen.io/netsi1964/full/QbLLGW/
+
+
+NOVO, nema u IE
+document.execCommand("insertHTML", false, "<span class='own-class'>"+ document.getSelection()+"</span>");

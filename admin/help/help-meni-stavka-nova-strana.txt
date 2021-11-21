@@ -1,0 +1,23 @@
+1.  adminSettings->MainMenu->stavka moze imati fn definisan, cime se poziva fja iz jinxFn a ne prikaz default tabele
+    "multiple_view": {
+        "fn": "showMultipleViewsTest1",
+        "label": "multiple_view"
+    }
+
+2.  istovremeno u newElementsDef, moze da se definise koji js i css je potreban da se ukljuci za:
+        showMultipleViewsTest1  
+
+3.
+        
+    jinxFn.showMultipleViewsTest1 = function(event){
+        jinxPage.resetAllDivs();
+        var div = $(document.createElement('div')).addClass('admin_input_view');
+        var tbl = $(document.createElement('div')).addClass('admin_table_view');
+        $('#admin_view').append(div);
+        $('#admin_view').append(tbl);
+        jinxPage.createView(
+            'meni', $('#admin_view'), div, tbl
+        );
+        let ind = parseInt(div.attr('data-jinx-divs-id'));
+        jinxPage.refreshView('meni', 'table', undefined, {'pageNumber': 1}, ind);
+    }

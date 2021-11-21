@@ -1,0 +1,40 @@
+KAD IMATE XAMPP U POZADINI KOJI RADI, i zelite da pozovete server,
+npr da procitate neki fajl podaci.json preko fetch, da izbegnete CORS gresku, 2 stvari uradite:
+
+1.otvorite fajl package.json i dodajte sledeci red bilo gde:
+"proxy": "https://localhost/", 
+Resetujte npm start, znaci ako vec radi samo iskljucite i pokrenite ponovo
+
+2. naredba fetch se pise ovako:  
+
+fetch('/PrimeriPHP/podaci.json').then( resp=>resp.json).then(obj=> ...uradi nesto sa obj );
+Znaci ovde kod mene se u folderu PrimeriPHP nalazi file.json.
+A sve to je u htdocs.
+
+Ceo primer:
+App.js
+import React, { Component } from 'react';
+class App extends Component {
+  state = { odg: 'nema fajla'  }
+  componentDidMount(){
+    fetch('/PrimeriPHP/podaci.json')
+      .then(resp => resp.json())
+      .then(resp2 => {
+        this.setState({odg: resp2});
+      })
+  }
+  render() {
+    return (
+      <div>
+          <span>{JSON.stringify(this.state.odg)}</span>
+      </div>
+    );
+  }
+}
+export default App;
+
+podaci.json:
+{
+    "a": 6,
+    "c": 8
+}

@@ -1,0 +1,9 @@
+RewriteEngine On 
+RewriteRule ^$ http://localhost/admin_ocupio/admin/public/ [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^apijx/.* server/apijx.php?path=$0 [QSA]
+RewriteRule .*/apijx/.* server/apijx.php?path=$0 [QSA]
+RewriteRule ^server/$ http://localhost/admin_ocupio/admin/public/ [L]

@@ -1,0 +1,500 @@
+/*
+    A40808
+    ivica 444444
+
+*/
+/* @import url('https://fonts.googleapis.com/css?family=Exo+2&display=swap'); */
+
+html{
+    width:100%; height:100%;
+}
+
+body{
+    width:100%; height:100%;
+    font-family: 'Exo 2', sans-serif;
+    background:rgb(230,230,230);
+}
+    
+    .hidden_element{ display:none; }
+    
+	.page_link:hover, img.arr_order_by:hover{
+		cursor:pointer;
+		background-color: #99CCFF;
+	}
+	.arr_order_by_mark{ background-color: rgb(246, 130, 122); }
+
+    img.arr_order_by{ height: 0.6em; padding-left: 1px; }
+
+    .page_link{ color:blue; }
+    .page_link_mark{ font-size: 120%; font-weight:bold; }
+
+    .badField, .reqField{ display:none; color:red;}
+    /*.showReqField .reqField, .showBadField .badField{ display: inline-block;}
+    .showBadField[data-jinx-fname-bad]{ display: inline-block; }
+    .showReqField[data-jinx-fname-req]{ display: inline-block; }
+    */
+    input.showBadField, .showBadField input, select.showBadField, .showBadField select, 
+    textarea.showBadField, .showBadField textarea{ 
+        -webkit-box-shadow: 0px 0px 4px red;
+       -moz-box-shadow: 0px 0px 4px red;
+        box-shadow: 0px 0px 4px red; 
+    }
+    .badPasswordInput input{
+        -webkit-box-shadow: 0px 0px 4px blue;
+       -moz-box-shadow: 0px 0px 4px blue;
+        box-shadow: 0px 0px 4px blue; 
+    }
+
+    .sa_error_log{ 
+        /* display:none; */
+        position:fixed; right:20px; top:20px; width:25%; height:40%; 
+        border:2px solid #445599;
+        background-color: white; padding:2%; z-index:1000;
+    }
+        .hideSaErrorLog{ width:0; height:0; }
+        .hideSaErrorLog:hover{ cursor: pointer;}
+        .sa_error_log div.list{ 
+            position:relative; margin-top: 1em; height:90%;
+            overflow-y:scroll;  
+        }
+        .close_fixed_win{ 
+            position: absolute; right:0.5em; top:0.5em; height:1em; width:auto;
+            border:1px solid red; color:red;
+        }
+        .close_fixed_win:hover{ font-weight: bold; cursor: pointer;}
+
+    .a_error_log{
+        display:none; position:fixed; right:20px; top:20px; width:20%; 
+        border:2px solid red; background-color: white; padding:2%; z-index:1001;
+    }
+        .a_error_log p{ padding-top:0.5em; text-align:center; }
+
+    button{display:inline;}
+
+    .jinxTime{ display: inline;}
+
+
+a{ text-decoration:none; }
+
+.wrapper{
+    min-height: 100%;
+}
+    #menuIcon{ 
+        display:none; position: absolute; top:0; left:0; height:3em; width:auto; z-index:1000;
+    }
+div#mainMenu_wrapper, div#smallMainMenu_wrapper{  
+    position:fixed; 
+    background:url('../img/pozadine/greya.jpg');
+    background-repeat: repeat;
+    /*background-color: #61b8b4;*/
+    height:100%; width:20%; z-index:10; overflow:hidden; 
+    overflow-y: scroll;
+}
+
+
+    ul.menu{  
+        font-size:20px;    line-height:26px; font-family: 'Lato', sans-serif;  margin-top:50px;    
+    }
+        ul.menu li{  
+            background-color:#33333388; 
+            padding:6px; padding-right:30px; 
+            margin-top:20px; text-align:right;  color:white;   
+        }
+    #showHideMM{
+        position: absolute; top:0; right:0; width:9%; height:auto; 
+    }
+        #showHideMM:hover{ cursor: pointer; }
+
+
+
+    div#smallMainMenu_wrapper{
+        display:none; width:100%; top:0; background:none;
+    }
+    div#smallMainMenu_wrapper ul.menu{ 
+        background-color:#33333388; 
+        padding-top: 3em;  height: 100%;  margin-top: 0;
+    }
+        div#smallMainMenu_wrapper ul.menu li{
+            text-align: left; margin-top:0; padding-left: 1em; background:none;
+        } 
+
+
+
+div#admin_view{ 
+    position:fixed;  left:20%; width:80%; top:0;    height: 100%;
+    font-family: 'Lato', sans-serif; 
+    overflow:scroll;
+
+        /*background:url('batthern.png');*/
+        background-repeat: repeat;
+        border: 2px solid #333;
+}
+    div#sadrzaj_pozadina{ 
+        position:absolute;  
+        height:100%; width:100%; left:0; top:0; z-index:-10;
+    }  
+    div#sadrzaj_maska{ 
+        display:none; position:absolute;  background-color:#FFFFFF77;
+        height:100%; width:100%; left:0; top:0; z-index:-10;
+    }
+
+    .open_close{ width:16px; height:16px; float:right; }
+    .open_close:hover{ cursor:pointer;}
+    .ozn_admin_mainMenu_wrapper{ color:orange; }
+    
+h2{ line-height:2em; font-size:160%; }
+   
+
+.admin_table_view, .admin_input_view{
+    color:#333; padding-left:2em; padding-right:2em; 
+    padding-top:1em; padding-bottom: 1em; border-radius: 8px;
+    
+}
+/*.admin_table_view{overflow-x: scroll;}*/
+    .admin_table_view div[data-jinx-view="search"]{
+        position:relative; line-height: 1.8em; color:#333; max-width: 100%;
+    }
+        .admin_table_view div[data-jinx-view="search"] > div{ 
+            display: inline-block; width:200px; padding-left:20px; 
+        }
+        .admin_table_view div[data-jinx-view="search"] > div.hidden_element{
+            display:none;
+        }
+
+    input, textarea, select{
+        line-height: 1.3rem;
+        border-radius: 5%;
+        padding: 4px;
+        border:1px solid #333; color:#333;
+        margin: 2px;
+        margin-left: 3%;
+    }
+
+.admin_input_view{
+    display:none; line-height: 1.8em; color:#333; max-width: 98%;
+    border-radius: 8px; border: 2px solid #333; 
+}
+    span.form_field_label{  
+        display:inline-block; width:100px; 
+    }
+    .admin_input_view > div{ 
+        display: block; width:auto; padding-left:20px; 
+        margin-bottom:1em;
+    }
+    .in_line > div{ display:inline-block; }
+
+    .admin_input_view > div.hidden_element{
+        display:none;
+    }
+    .admin_input_view div span.form_field_label{ 
+        font-weight: bold; font-size:110%; 
+    } 
+
+.submenu_dragg{
+    display:none;
+    position: fixed;
+    background-color: white;
+    border: 2px solid black;
+    top: 100px;
+    left: 600px; padding:1em; padding-top: 0;
+    box-shadow: 1em 1em 2em black, -1em -1em 2em gray;
+}
+.submenu_dragg div div{ padding:0.3em; }
+.submenu_dragg:hover{ cursor: move; }
+.close_submenu_dragg{ 
+    z-index:1000; position:absolute; top:0.5em; right:0.5em; font-size: 0.8em; 
+    width:1.2em; height:1.2em;  background-color: red;
+    color:white; border:1px solid red; border-radius: 50%; line-height: 1em;
+}
+.close_submenu_dragg:hover{
+    cursor:pointer;
+} 
+
+    /*******************************************************************************
+    ***
+    ***  SAMO 1 RED KOJI SE PRIKAZUJE U KOLONI 
+    ***
+    *****************************************************************************/
+
+    div.tableWithOneRowInColumn input{      width: 200px;    } 
+    div.tableWithOneRowInColumn .jinxTableHeading, div.tableWithOneRowInColumn .jinxTableRow{
+        display:inline-block; 
+    }
+    div.tableWithOneRowInColumn .jinxTableHeading{
+        width:200px; 
+    }
+    div.tableWithOneRowInColumn .jinxTableCell, div.tableWithOneRowInColumn .jinxTableHead{
+        display:block; min-height:22px; height:22px; line-height: 22px;
+    }
+
+
+    /*******************************************************************************
+    ***
+    ***  CHARTS
+    ***
+    *******************************************************************************/
+    .chart-parent{
+        position: relative; width:35vw; height:35vw; float:left; margin-left:2em;
+    }
+
+
+
+
+
+
+        .jinxTable {
+                display: table;
+                border:2px solid #333;
+        }
+        .jinxTableRow {
+                display: table-row;
+        }
+        .jinxTableHeading {
+                display: table-header-group;
+                background-color: #ddd;
+                font-weight: bold;
+        }
+        .jinxTableFoot {
+                display: table-footer-group;
+                font-weight: bold;
+                background-color: #ddd;
+        }
+        .jinxTableColspan{
+                display: table-caption;
+                background-color: #ddd;
+                font-weight: bold;
+                padding: 8px;
+        }
+        .jinxTableColspan .pageNumbers{
+                padding-left: 1em; display: inline;
+        }
+        .jinxTableColspanBottom{
+                caption-side: bottom;
+        }
+        .jinxTableCell, .jinxTableHead {
+                display: table-cell;
+                padding: 3px;
+                padding-left:1ch; padding-right:1ch;
+                border: 1px solid #999999;
+                white-space:nowrap;
+                overflow:hidden;
+        }
+        .jinxTableEmptyCell{
+            line-height: 1em; visibility: hidden;
+        }
+        .jinxTableBody {
+                display: table-row-group;
+        }
+        .jinxTable .jinxTableRow:nth-child(even) {background: #EEE;}
+        .jinxTable .jinxTableRow:nth-child(odd) {background: #bbccdd;}
+        .jinxTable .jinxTableRow:nth-child(even) input, .jinxTable .jinxTableRow:nth-child(even) textarea, .jinxTable .jinxTableRow:nth-child(even) select{
+            color:#333; border:1px solid #333;
+        }
+        .jinxTable .jinxTableRow:nth-child(odd) input, .jinxTable .jinxTableRow:nth-child(odd) textarea, .jinxTable .jinxTableRow:nth-child(odd) select{
+            color: #333; border: 1px solid #333; background:#EEEEEE; 
+        }
+
+
+        .jinxBtn {
+            position:relative;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            font-size: 77%;
+            padding: 0.2em 0.7em 0.2em 0.7em;
+            text-decoration: none;
+            margin-left: 0.2em; margin-top: 0.2em; margin-bottom: 0.2em;  margin-right: 0.1em;
+            line-height: 2em;
+        }
+
+
+        .jinxRowFullLength{ position: relative; }
+        .jinxRowFullLength .jinxTableCell{ height: 1em; border:0; }
+        .jinxRowFullLength .jinxDisplay{ position: absolute; top:0; bottom:0; left:0; right:0; text-align: center; line-height:inherit; padding:3px; z-index:-1; }
+        @-moz-document url-prefix() {
+            .jinxRowFullLength .jinxDisplay{
+                z-index:0;
+            }
+        }
+    /*******************************************************************************
+    ***
+    ***  Blue
+    ***
+    *****************************************************************************
+    
+        ul.menu li:hover{
+            cursor: pointer;
+            color: #62de81;
+        }
+        ul.menu li.selected{
+            color: #62de81;
+            outline: #62de81 solid 6px;
+        }
+        
+    .jinxBtn {
+        background: #3498db;
+        background-image: -webkit-linear-gradient(top, #3498db, #1b638f);
+        background-image: -moz-linear-gradient(top, #3498db, #1b638f);
+        background-image: -ms-linear-gradient(top, #3498db, #1b638f);
+        background-image: -o-linear-gradient(top, #3498db, #1b638f);
+        background-image: linear-gradient(to bottom, #3498db, #1b638f);
+        border:1px solid black;
+        color: #ffffff;
+    }
+
+    .jinxBtn:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+
+
+
+    /*******************************************************************************
+    ***
+    ***  Crveno
+    ***
+    *****************************************************************************/
+
+    ul.menu li:hover{
+        cursor: pointer;
+        color:  #bd484c;
+    }
+    ul.menu li.selected{
+        color:  #bd484c;
+        outline:#444444 solid 6px;
+    }
+
+       .jinxTable {
+                border:2px solid #444444;
+        }
+        .jinxTableHeading {
+                background-color: #A40808;
+        }
+        .jinxTableFoot {
+                background-color: #A40808;
+        }
+        .jinxTableColspan{
+                background-color: #A40808;
+        }
+        .jinxTableCell, .jinxTableHead {
+                border: 1px solid #444444;
+        }
+        .jinxTableHead {color:white; }
+        .jinxTable .jinxTableRow:nth-child(even) {background: #F5C8BF;}
+        .jinxTable .jinxTableRow:nth-child(odd) {background: #EEE7DB;}
+        .jinxTable .jinxTableRow:nth-child(even) input, .jinxTable .jinxTableRow:nth-child(even) textarea, .jinxTable .jinxTableRow:nth-child(even) select{
+            color:#333; border:1px solid #aaa;
+        }
+        .jinxTable .jinxTableRow:nth-child(odd) input, .jinxTable .jinxTableRow:nth-child(odd) textarea, .jinxTable .jinxTableRow:nth-child(odd) select{
+            color: #333; border: 1px solid #aaa;
+        }
+
+    .jinxBtn {
+        background: #bd484c;
+        background-image: -webkit-linear-gradient(top, #bd484c, #7d3032);
+        background-image: -moz-linear-gradient(top, #bd484c, #7d3032);
+        background-image: -ms-linear-gradient(top, #bd484c, #7d3032);
+        background-image: -o-linear-gradient(top, #bd484c, #7d3032);
+        background-image: linear-gradient(to bottom, #bd484c, #7d3032);
+        border:1px solid black;
+        color: #ffffff;
+    }
+
+    .jinxBtn:hover, .jinxBtn:focus {
+        background: #ca4d51;
+        background-image: -webkit-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: -moz-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: -ms-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: -o-linear-gradient(top, #ca4d51, #bd484c);
+        background-image: linear-gradient(to bottom, #ca4d51, #bd484c);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .jinxBtn:focus {
+        color:rgb(189, 189, 189);
+        outline:solid 2px rgba(170, 194, 31, 0) !important;
+    }
+
+
+    /*******************************************************************************
+    ***
+    ***  Green
+    ***
+    ******************************************************************************
+     .a_error_log{
+        border:2px solid lightgreen;
+        -webkit-box-shadow: -2px -2px 4px lightgreen, 2px 2px 4px lightgreen; 
+        -moz-box-shadow: -2px -2px 4px lightgreen, 2px 2px 4px lightgreen; 
+        box-shadow: -2px -2px 4px lightgreen, 2px 2px 4px lightgreen; 
+    }
+    ul.menu li:hover{
+        cursor: pointer;
+        color: #62de81;
+    }
+    ul.menu li.selected{
+        color: #62de81;
+        outline: #62de81 solid 6px;
+    }
+        .jinxTable {
+                border:2px solid #ddd;
+        }
+        .jinxTableHeading {
+                background-color: #62de81;
+        }
+        .jinxTableFoot {
+                background-color: #62de81;
+        }
+        .jinxTableColspan{
+                background-color: #62de81;                
+        }
+        .jinxTableCell, .jinxTableHead {
+                border: 1px solid #ddd;
+        }
+        input, textarea, select{
+            background: #cfffd3;
+        }
+        .jinxTableHead {color:white; }
+        .jinxTable .jinxTableRow:nth-child(even) {background: #62de81;}
+        .jinxTable .jinxTableRow:nth-child(odd) {background: #c7ffd3;}
+        .jinxTable .jinxTableRow:nth-child(even) input, .jinxTable .jinxTableRow:nth-child(even) textarea, .jinxTable .jinxTableRow:nth-child(even) select{
+            color:#333; border:1px solid #aaa;
+        }
+        .jinxTable .jinxTableRow:nth-child(odd) input, .jinxTable .jinxTableRow:nth-child(odd) textarea, .jinxTable .jinxTableRow:nth-child(odd) select{
+            color: #333; border: 1px solid #aaa; 
+        }
+
+    .jinxBtn {
+       background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ddd), color-stop(1, #ccc2a6));
+        background:-moz-linear-gradient(top, #ddd 5%, #afafaf 100%);
+        background:-webkit-linear-gradient(top, #ddd 5%, #afafaf 100%);
+        background:-o-linear-gradient(top, #ddd 5%, #afafaf 100%);
+        background:-ms-linear-gradient(top, #ddd 5%, #afafaf 100%);
+        background:linear-gradient(to bottom, #ddd 5%, #afafaf 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ddd', endColorstr='#afafaf',GradientType=0);
+        background-color:#ddd;
+        border:2px solid #afafaf;        
+        font-weight: bold;
+        color: #333;
+        
+    }
+    .jinxBtn:hover {
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c7ffd3), color-stop(1, #afafaf));
+        background:-moz-linear-gradient(top, #c7ffd3 5%, #afafaf 100%);
+        background:-o-linear-gradient(top, #c7ffd3 5%, #afafaf 100%);
+        background:-ms-linear-gradient(top, #c7ffd3 5%, #afafaf 100%);
+        background:linear-gradient(to bottom,#c7ffd3 5%, #afafaf 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c7ffd3', endColorstr='#afafaf',GradientType=0);
+        background-color:#ddd;
+    }
+    .jinxBtn:active {
+        position:relative;
+        top:1px;
+    }

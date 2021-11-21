@@ -1,0 +1,197 @@
+	{
+		"jsonTableName": "chat_users",
+		"filename": "json/ocupio/chat_users.json",
+		"tableName": "chat_users",
+		"tableType": "BASE TABLE",
+		"types": [
+			"input",
+			"table",
+			"search"
+		],
+		"inputTitle": "DODAJ",
+		"searchTitle": "PRETRA\u017dI",
+		"tableTitle": "chat_users",
+		"linesPerRequest": 50,
+		"tableSettings": {
+			"allFieldsLabel": false,
+			"allFieldsRequired": true,
+			"tableWithInput": true,
+			"tableWithSearch": true,
+			"openTableAfterInput": true,
+			"tablePageNumbersPos": "header",
+			"_comment": "first, prev, next, last",
+			"pageNumbers": true,
+			"pageNumbersSide": [
+				true,
+				true,
+				true,
+				true
+			],
+			"resetSortButton": true,
+			"addNewButton": true,
+			"badFieldStar": true
+		},
+		"buttonsPerView": {
+			"input": [
+				"save",
+				"reset"
+			],
+			"table": [
+				"save",
+				"edit",
+				"reset",
+				"delete"
+			],
+			"search": [
+				"search",
+				"reset"
+			]
+		},
+		"fields": {
+			"chat_users_field_id": {
+				"name": "chat_users_field_id",
+				"restrictions": [
+					
+				],
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "id",
+				"sqlFieldName": "chat_users_field_id",
+				"inputView": "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "label",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"chat_users_field_chat_id": {
+				"name": "chat_users_field_chat_id",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "chat_id",
+				"sqlFieldName": "chat_users_field_chat_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"chat_users_field_user_id": {
+				"name": "chat_users_field_user_id",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "user_id",
+				"sqlFieldName": "chat_users_field_user_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"chat_users_field_status_id": {
+				"name": "chat_users_field_status_id",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "status_id",
+				"sqlFieldName": "chat_users_field_status_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"chat_users_field_last_time": {
+				"name": "chat_users_field_last_time",
+				"restrictions": {
+					"type": "datetime",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "last_time",
+				"sqlFieldName": "chat_users_field_last_time",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "datetime",
+				"sortCol": true
+			}
+		},
+		"callbackFns": {
+			"afterInsert": "",
+			"afterUpdate": "",
+			"afterDelete": "",
+			"afterHtmlTable": ""
+		},
+		"orderBy": {
+			"inputOrder": [
+				"chat_users_field_id",
+				"chat_users_field_chat_id",
+				"chat_users_field_user_id",
+				"chat_users_field_status_id",
+				"chat_users_field_last_time"
+			],
+			"tableOrder": [
+				"chat_users_field_id",
+				"chat_users_field_chat_id",
+				"chat_users_field_user_id",
+				"chat_users_field_status_id",
+				"chat_users_field_last_time"
+			],
+			"searchOrder": [
+				"chat_users_field_id",
+				"chat_users_field_chat_id",
+				"chat_users_field_user_id",
+				"chat_users_field_status_id",
+				"chat_users_field_last_time"
+			],
+			"sortOrder": {
+				"chat_users_field_id": "ASC"
+			},
+			"primKeyOrder": [
+				"chat_users_field_id"
+			],
+			"searchDefaultVal": {
+				"no_sql": ""
+			}
+		}
+	}

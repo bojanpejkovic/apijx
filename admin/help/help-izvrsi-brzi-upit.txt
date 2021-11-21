@@ -1,0 +1,82 @@
+<?php
+    // die('AAA');
+    require_once 'server/main.php';
+    session_start();
+    // //echo 'AAA';
+    
+    // error_reporting(E_ERROR | E_PARSE);
+    ini_set('max_execution_time', 200);
+    // //echo '111A';
+    require_once "public/php/Classes/PHPExcel.php";
+    // //echo 'OPAA';
+    require_once 'server/config/configDB.php'; 
+
+
+    
+    if(!isset($_POST['filename']))
+        die("Fali filename!");
+    read_file($_POST['filename']);
+
+//UPDATE
+    function read_file($fajl){
+            if (!file_exists($fajl)){ exit('Ne postoji fajl '.$fajl.'!');		}
+            $objPHPExcel = PHPExcel_IOFactory::load($fajl);
+            $objPHPExcel->setActiveSheetIndex(0);
+            
+            $i=0; $kraj=0; $gr=false;
+
+            $prikaz = 'GREŠKE SU U REDOVIMA:<br>';
+            $pr = 0; $bo = 0; 
+            upit('DELETE FROM kolicine');
+
+            $osnova = "INSERT INTO kolicine(Sifra, Kolicina) VALUES ";
+            $vals = '';
+            while($kraj<3){
+                $i++;
+                $p1=trim($objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue());
+                if($p1==""){
+                    $kraj++;
+                }else{
+                    $kraj=0;
+                    $p2=$objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
+                    $vals .= "('".$p1."', ".$p2."),";
+                    if($i % 50 == 0){
+                        $vals = substr($vals, 0, -1);
+                        $vals .= ";";
+                        upit($osnova.$vals);
+                        $vals = '';
+                    }
+                }
+            }
+            $vals = substr($vals, 0, -1);
+            $vals .= ";";
+            upit($osnova.$vals);
+            //unlink($fajl);
+            if($gr==false){
+                $prikaz .= "NEMA.";
+            }
+            $prikaz .= '<br> Zadnji ucitan red:'.$i;
+
+            $b = upit('UPDATE boje AS B, kolicine AS K SET B.Kolicina = K.Kolicina WHERE B.Sifra_boje=K.Sifra');
+            upit('UPDATE proizvodi AS P SET Kolicina = (select sum(Kolicina) FROM boje AS B WHERE B.Sifra=P.Sifra) WHERE P.Sifra IN (SELECT Sifra FROM boje)');
+            $p = upit('UPDATE proizvodi AS P, kolicine AS K SET P.Kolicina = K.Kolicina WHERE P.Sifra=K.Sifra');
+            $prikaz .= "<br>Broj promenjenih kolicina u proizvodima: ".$p."<br>";
+            $prikaz .= "<br>Broj promenjenih kolicina u bojama: ".$b."<br>";
+            echo json_encode(["OKERR"=> true, 'prikaz'=>$prikaz]);
+    }
+
+
+    function upit($upit){
+		$kred = configDB()['sa'];
+		$db = mysqli_connect( 'localhost',  $kred['db_user'],  $kred['db_pass'],);
+		if(!$db){ echo json_encode(["OKERR"=> true, 'prikaz'=>'<h1>greska u povezivanju</h1>']); exit; }
+		mysqli_select_db($db, $kred['db_name']);
+		$db->set_charset("utf8");
+        
+        if (!mysqli_query($db, $upit)){
+            echo json_encode(["OKERR"=> false, 
+                'prikaz'=>'Greska: '.mysqli_error($db).'<br>'.$upit]);
+			exit;
+		}else return  $db->affected_rows;
+	}
+?>

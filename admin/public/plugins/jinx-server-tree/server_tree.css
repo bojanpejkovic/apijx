@@ -1,0 +1,40 @@
+/*//////////////////////////////////////////////////////////
+server-tree
+/////////////////////////////////////////////////////////*/
+div[data-jinx-class="server_tree"]{ 
+    display:none; position:fixed; background:url('dot_black_transparent.png'); width:100%; height:100%;
+    z-index:1000; top:0px; left:0px;
+}
+    div[data-jinx-class="server_tree"] .tree{
+        position:absolute; top:100px; height:50%; left:50%; margin-left:-300px; width:600px;
+        background-color: #DDDDDD; color:black; overflow-y:scroll; padding:20px;
+    }
+    div[data-jinx-class="server_tree"] .server_tree_btn{ 
+        position:absolute; 
+        width:100px; font-weight: bold; font-size: 120%; line-height:1.5em; 
+        top:70%; left:50%; margin-left: 40px;
+    }
+        div[data-jinx-class="server_tree"] .server_ok_image, 
+        div[data-jinx-class="server_tree"] .server_delete_image{ margin-left: -140px; }
+        div[data-jinx-class="server_tree"] p.tree_node{
+            display:none; max-width:45%; text-align:left; line-height: 1.2em;
+            position:relative;
+        }
+        div[data-jinx-class="server_tree"] p.tree_node:hover{ background-color: white; cursor:pointer; }
+        div[data-jinx-class="server_tree"] p.tree_node[data-tree-level="0"]{
+            display:block;
+        } 
+        div[data-jinx-class="server_tree"] .tree_image, 
+        div[data-jinx-class="server_tree"] .tree_dir{ 
+            padding-left:30px; line-height:20px; 
+            background-image: url('iconphoto.png');
+            background-size: 1em 1em;
+            background-position:  0 0;
+            background-repeat: no-repeat;
+        }
+        div[data-jinx-class="server_tree"] .tree_dir{background-image: url('icondir.gif'); }
+
+        div[data-jinx-class="server_tree"] p.tree_image_selected{ background-color: red !important;}
+        div[data-jinx-class="server_tree"] .server_tree_img_preview{ 
+            position:fixed; width:300px; left:50%; height: 25%; top:25%; background-color: white; border:1px solid black;
+        }

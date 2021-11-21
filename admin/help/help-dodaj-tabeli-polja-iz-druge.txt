@@ -1,0 +1,44 @@
+ILI:
+KAKO DA id-iz jedne tabele dobijem naziv iz druge na najlaksi moguci nacin.
+Prosiri osnovnu tabelu poljima iz druge.
+
+1.  akcija.json  (iskopiraj prvo i nazovi drugacije)
+    "tableName": "akcija",
+		"tableType": "QUERY",
+		"queryName":"akcija2",
+
+2. sql_fields.json :
+    "akcija2":{
+        "SELECT": "distinct akcija.*, proizvodi.Naziv AS NazivPr",
+        "FROM": "akcija LEFT JOIN proizvodi ON akcija.Id_proizvoda=proizvodi.Id"
+    }
+
+3. configTables.json 
+    adminSettings{
+        "mainManu":{
+            "akcija_nova":{
+                "viewName": "akcija_nova",
+					"label": ""
+            }
+        }
+        "allowed": {
+				"queries": [ "akcija2" ]
+
+4. "proizvodi_field_Naziv":{
+        "name": "proizvodi_field_Naziv",
+        "restrictions": {},
+        "attrList": [],
+        "labelLng": false,
+        "label": "",
+        "sqlFieldName": "proizvodi_field_Naziv",
+        "thisQueryFieldName": "NazivPr",
+        "inputView": "DEFAULT",
+        "inputViewType": "label",
+        "tableView": "DEFAULT",
+        "tableViewType": "label",
+        "searchView": "DEFAULT",
+        "searchViewType": "label",
+        "type": "text-short",
+        "sortCol": true
+    },
+5. dodaj proizvodi_field_Naziv u tableOrder

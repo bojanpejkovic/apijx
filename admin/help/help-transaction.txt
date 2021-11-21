@@ -1,0 +1,49 @@
+          let data1 = {};
+          for(let ime in vals)
+              data1["porudzbine_field_"+ime] = vals[ime];                
+          data1["porudzbine_field_tip_preuzimanja"] = this.state.porucivanjeTip;
+          data1["porudzbine_field_tip_papira"] = this.state.tipPapira;
+          let uku_cena = fotke.reduce( (s,fotka)=> s+fotka.cena*fotka.kol, 0);
+          data1["porudzbine_field_uku_cena"] = uku_cena;
+
+          //INSERT
+          sqlQueries.push({path:'model/porudzbine/input', cols:data1, apijxMethod:'POST' });
+
+          //  UPDATE
+          let whereColsR =[
+                        {colName: 'artikli_magacin_field_magacin_id', colVal: C.KORPA_WEB_MAGACIN_ID, 
+                        oper:'=', logicOper: 'AND'
+                        },
+                        {colName: 'artikli_magacin_field_artikal_id', colVal: stavka.id, 
+                        oper:'=', logicOper: 'AND'
+                        }
+                    ];
+          let colsR ={ "artikli_magacin_field_kolicina":(artikal.artikli_magacin_field_kolicina - stavka.kol) };
+          // whereCols ne treba ako je path: 'model/artikli_magacin/:'+id
+          data.push( { path:'model/artikli_magacin/input', cols:colsR, whereCols:whereColsR, apijxMethod:'PUT' } );
+
+
+          // STAVKE
+          for(let i=0; i<fotke.length; i++){
+              let data2 = {
+                "stavke_porudzbine_field_porudzbina_id": this.state.brojPorudzbine, //'prevInsert[0][id]',
+                "stavke_porudzbine_field_slika": fotke[i].upl,
+                "stavke_porudzbine_field_kolicina": fotke[i].kol,
+                "stavke_porudzbine_field_dimenzije": fotke[i].format,
+                "stavke_porudzbine_field_cena": 10,
+                "stavke_porudzbine_field_uku_cena": 10 * fotke[i].kol
+              };
+              sqlQueries.push({path:'model/stavke_porudzbine/input', cols:data2, apijxMethod:'POST' });
+          }
+          
+          
+          let that = this;
+          ajaxCall('server/apijx/sqlTrans/', 'POST', { sqlQueries:sqlQueries}, 
+              function(a){ 
+                console.log(JSON.stringify(a));
+                if(a.OKERR == true){
+                    alert('Hvala vam što ste naručili izradu fotografija kod nas!');
+                    that.brisiSveFotke();
+                }
+              }
+          );

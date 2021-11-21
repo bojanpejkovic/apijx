@@ -1,0 +1,52 @@
+1. u .json:
+,
+			"proizvodi_field_buttonSlike": {
+				"name": "proizvodi_field_buttonSlike",
+				"restrictions": {
+					"val": ">=0;<=255",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "Slike",
+				"sqlFieldName": "no_sql",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "NEW-ELEMENT",
+				"tableViewType": "proizvodiButtonSlike",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"type": "boolean",
+				"sortCol": true
+			}
+
+2. jinx-fn
+			jinxFn.proizvodiButtonSlike = {
+				name:"proizvodiButtonSlike",
+				create: function(wrapType, label, allVals, name, args){
+					let htmlEl = $(document.createElement('div'));
+					let btn = $(document.createElement('button'));
+					btn.text("SLIKE");
+					htmlEl.append(btn);
+					return htmlEl;
+				},
+				val : function(htmlEl, value, calcVals){ 
+					console.log('VAL', calcVals);
+					if(calcVals && calcVals.proizvodi_field_Id){
+						htmlEl.find('button').on('click', function(){
+							let id = calcVals.proizvodi_field_Id;
+							var data =  {
+								inputFieldValuesOnly:{proizvodi_slike_field_proizvod_id: id }, 
+								whereCols:[
+									{ colName: 'proizvodi_slike_field_proizvod_id', colVal: id, oper:'=', logicOper: 'AND'  }
+								], 
+								orderBy:{'proizvodi_slike_field_redosled': 'ASC'}
+							};
+							jinxPage.createModalView('proizvodi_slike', 'page', data, undefined);
+						});
+					}
+				}
+			}

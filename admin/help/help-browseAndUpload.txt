@@ -1,0 +1,20 @@
+PRVO, koji je base folder za slike namesti na 2 mesta:
+I) u jinx-fns-default.js:
+browseAndUpload
+    file_path: '../img/upload/', 
+II) u manipulate_file.php 
+$base_folder = '../img/';
+
+
+1. za test u folderu PrimeriPHP/slike ili /img napravi folder gde ide sliku za taj browse koji hoces
+2. u tabela.json: 
+    "tableView": "NEW-ELEMENT",
+	"tableViewType": "browseAndUpload",
+3. u tabela.json:
+    "callbackFns": {
+			"afterInsert": "afterUpdInsertProizvodjac",
+			"afterUpdate": "afterUpdInsertProizvodjac",
+
+4. jinxFn.afterUpdInsertProizvodjac = function(pk, vals, div){
+    jinxFn.afterUpdInsertForm(pk, vals, div, 'brendovi'); //samo poslednji arg namesti ime foldera unutar $base_folder. Ako ima vise formi, moze i niz: ['brendovi', 'mototure']...
+}

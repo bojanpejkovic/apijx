@@ -1,0 +1,51 @@
+1. 
+//samo tabela
+jinxFn.createStatMes = function(){
+    let view = "table";
+    let tbl_wrap = $(document.createElement('div'));
+    let tbl = $(document.createElement('div')).addClass("admin_table_view"); 
+    tbl_wrap.append(tbl);
+    $('div#admin_view').append(tbl_wrap);
+
+    let tableName = "poseteM";
+    jinxPage.createView(tableName, tbl_wrap, undefined, tbl);
+    let ind = tbl.attr('data-jinx-divs-id');
+    jinxPage.refreshView(tableName, view, undefined, {}, ind);
+    tbl_wrap.show();
+}
+
+2. 
+"callbackFns": {
+    "afterHtmlTable": "createStatMes"
+}
+
+
+// uopsteno za PAGE u koraku 1:
+function napravi(view, tableName){
+        if(view !== 'page' && view !== 'table' && view !== 'input' && view !=='details'){
+            this.display('View must be page, table, input or details');
+            return;
+        }
+        var tbl_wrap = $(document.createElement('div')).addClass('submenu_dragg');
+        var tbl = $(document.createElement('div')); 
+        var inp = $(document.createElement('div')); 
+        var close_btn = $(document.createElement('img')).prop('src', '../img/close.png')
+            .addClass('close_submenu_dragg')
+            .on('click', function(){  tbl_wrap.hide();  });
+        tbl_wrap.append(inp);
+        tbl_wrap.append(tbl);
+        tbl_wrap.append(close_btn);
+        $('body').append(tbl_wrap);
+        tbl_wrap.draggable();
+
+        jinxPage.createView(tableName, tbl_wrap, inp, tbl);
+        var ind = (view == 'table' || view=='page')? tbl.attr('data-jinx-divs-id') : inp.attr('data-jinx-divs-id');
+        var nowView = (view == 'page')? 'table' : view;
+        console.log('ind',ind);
+        jinxPage.refreshView(tableName, nowView, key_id, data, ind);
+        if(view == 'page'){
+            ind2 = inp.attr('data-jinx-divs-id');
+            jinxPage.refreshView(tableName, 'input', key_id, data, ind2);
+        }
+        tbl_wrap.show();
+}

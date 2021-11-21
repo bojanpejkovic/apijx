@@ -1,0 +1,197 @@
+	{
+		"jsonTableName": "meeting_users",
+		"filename": "json/ocupio/meeting_users.json",
+		"tableName": "meeting_users",
+		"tableType": "BASE TABLE",
+		"types": [
+			"input",
+			"table",
+			"search"
+		],
+		"inputTitle": "DODAJ",
+		"searchTitle": "PRETRA\u017dI",
+		"tableTitle": "meeting_users",
+		"linesPerRequest": 50,
+		"tableSettings": {
+			"allFieldsLabel": false,
+			"allFieldsRequired": true,
+			"tableWithInput": true,
+			"tableWithSearch": true,
+			"openTableAfterInput": true,
+			"tablePageNumbersPos": "header",
+			"_comment": "first, prev, next, last",
+			"pageNumbers": true,
+			"pageNumbersSide": [
+				true,
+				true,
+				true,
+				true
+			],
+			"resetSortButton": true,
+			"addNewButton": true,
+			"badFieldStar": true
+		},
+		"buttonsPerView": {
+			"input": [
+				"save",
+				"reset"
+			],
+			"table": [
+				"save",
+				"edit",
+				"reset",
+				"delete"
+			],
+			"search": [
+				"search",
+				"reset"
+			]
+		},
+		"fields": {
+			"meeting_users_field_id": {
+				"name": "meeting_users_field_id",
+				"restrictions": [
+					
+				],
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "id",
+				"sqlFieldName": "meeting_users_field_id",
+				"inputView": "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "label",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"meeting_users_field_meeting_id": {
+				"name": "meeting_users_field_meeting_id",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "meeting_id",
+				"sqlFieldName": "meeting_users_field_meeting_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"meeting_users_field_user_id": {
+				"name": "meeting_users_field_user_id",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "user_id",
+				"sqlFieldName": "meeting_users_field_user_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"meeting_users_field_attendance": {
+				"name": "meeting_users_field_attendance",
+				"restrictions": {
+					"val": ">=0;<=255",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "attendance",
+				"sqlFieldName": "meeting_users_field_attendance",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "selectDANE",
+				"type": "boolean",
+				"sortCol": true
+			},
+			"meeting_users_field_comment": {
+				"name": "meeting_users_field_comment",
+				"restrictions": {
+					"len": "<=21844",
+					"notEmpty": true
+				},
+				"attrList": {
+					"maxlength": 21844
+				},
+				"labelLng": false,
+				"label": "comment",
+				"sqlFieldName": "meeting_users_field_comment",
+				"inputView": "DEFAULT",
+				"inputViewType": "textarea",
+				"tableView": "NEW-ELEMENT",
+				"tableViewType": "shortLabel",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"type": "text",
+				"sortCol": false
+			}
+		},
+		"callbackFns": {
+			"afterInsert": "",
+			"afterUpdate": "",
+			"afterDelete": "",
+			"afterHtmlTable": ""
+		},
+		"orderBy": {
+			"inputOrder": [
+				"meeting_users_field_id",
+				"meeting_users_field_meeting_id",
+				"meeting_users_field_user_id",
+				"meeting_users_field_attendance",
+				"meeting_users_field_comment"
+			],
+			"tableOrder": [
+				"meeting_users_field_id",
+				"meeting_users_field_meeting_id",
+				"meeting_users_field_user_id",
+				"meeting_users_field_attendance",
+				"meeting_users_field_comment"
+			],
+			"searchOrder": [
+				"meeting_users_field_id",
+				"meeting_users_field_meeting_id",
+				"meeting_users_field_user_id",
+				"meeting_users_field_attendance",
+				"meeting_users_field_comment"
+			],
+			"sortOrder": {
+				"meeting_users_field_id": "ASC"
+			},
+			"primKeyOrder": [
+				"meeting_users_field_id"
+			],
+			"searchDefaultVal": {
+				"no_sql": ""
+			}
+		}
+	}

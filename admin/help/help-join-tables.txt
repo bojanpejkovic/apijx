@@ -1,0 +1,22 @@
+jinxPage.ajaxCall('apijx/model/stavke_porudzbine/table', 'GET', {
+    // join je niz.
+    // ako je string polje, ta tabela se spaja sa ovom iz modela.
+    // ako je array - ide tabela koja ima spoljni kljuc, pa ona koja ima primarni, pa tabela koja ide u join.
+    //
+    join:['porudzbine', ['stavke_porudzbine', 'cenovnik_fotografija', 1] ],
+    selCols:['stavke_porudzbine_field_slika', 'porudzbine_field_tip_papira', 'stavke_porudzbine_field_cena','cenovnik_fotografija_field_cena'],
+    whereCols:[
+        {colName:'porudzbine_field_id', colVal:'10', oper:'=', logicOper:'AND'}
+    ],
+    orderBy:{stavke_porudzbine_field_slika: 'DESC'}
+}
+, function(a){
+    alert();
+    console.log(a);
+    console.log(a.lines);
+});
+
+
+STA JE OSTALO:
+ - ako tabela se referencira na samu sebe, mora da postoji AS u upitu
+ npr stavke_por AS s1 LEFT JOIN stavke_por AS s2 ON s1.polje1 = s2.polje2

@@ -1,0 +1,62 @@
+
+
+SQL QUERY na tri nacina:
+        "sqlQueries":{
+            "vlasnikQ1":{
+                "sqlQuery":"SELECT ID gid, Ime, Adresa, Telefon FROM vlasnik",
+                "sqlQueryType": "get",
+				"linesPerRequest" : 2,
+                "orderBy": "Ime ASC"
+            },
+			"korisnikCheck":{
+				"sqlQuery": "SELECT * FROM korp_users WHERE Name=? AND Password=?",
+				"paramTypes": "ss",
+				"sqlQueryType": "get",
+				"linesPerRequest" : 1
+			},
+            "akcija2":{
+                "SELECT": "distinct akcija.*, proizvodi.Naziv AS NazivPr",
+                "FROM": "akcija LEFT JOIN proizvodi ON akcija.Id_proizvoda=proizvodi.Id"
+            },
+            "zivotinja_query":{
+                "SELECT":"zivotinja.*, rasa.Rasa AS rRasa, vlasnik.Ime AS vIme, vlasnik.Adresa AS vAdresa, vlasnik.Telefon AS vTelefon",
+                "FROM":"(zivotinja LEFT JOIN vlasnik ON zivotinja.VlasnikID=vlasnik.ID) LEFT JOIN rasa ON zivotinja.RasaID=rasa.ID",
+                "GROUP_BY":"nesto,nesto, nesto" - having moze unutra    
+            }
+        }
+
+=================================================================
+
+        -a poziv za neki query izgleda ovako:
+            var data = {  
+                sqlQuery: "vlasnikQ1",
+                whereCols:[
+                    {colName:'G.Sifra', colVal:svi_podaci.GET.grupa, oper:'=', logicOper:'AND'},
+                    pageNumber: 0 - 1
+                ] 
+            };         
+            ili   
+            var data = {sqlQuery:'korisnikCheck', whereCols:['admin', 'admin']};
+
+                              'apijx/sqlParamQuery'
+            jinxPage.ajaxCall('apijx/sqlQuery',     'GET', data, function(getData){
+                if(getData.OKERR == false){
+                    jinxPage.display('OKERR === false', 'red');
+                    jinxPage.display('resp from apijx/sqlQuery: '+jinxPage.json2str(getData));
+                    return;
+                }
+
+            data = {sqlQuery:'artikal', whereCols:[1]};        
+            let resp2 = await promiseAjaxCall('apijx/sqlParamQuery', 'GET', data);
+=================================================================
+
+DA se napravi i poseban fajl sa queryijem, u json ide:
+            
+            "tableType": "QUERY",
+            "queryName":"zivotinja_query",
+
+
+configTables.json:
+    "regularSettings": {
+		"notAllowed":['', ''] - imena viewova i sqlQueryja koji nisu dozvoljeni regUSeru.
+        Npr. tabela(view - korisnici) nije dozvoljena, ali napravis sqlQuery kojim se cita samo jedan korisnik (id je obavezan u paramQuery)

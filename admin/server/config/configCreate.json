@@ -1,0 +1,248 @@
+{
+	"createJsonSettings":{
+		"tinyintAsBool": true
+	},
+	"sqlTypeToJsonType": [
+		"auto_increment", "auto_update", "text-short", "text", "password", 
+		"int", "boolean", "float", "select", "date", "datetime", "time", "year"
+	],   "_comment":"this is field type",
+	
+
+
+	"tableSettings":{
+		"allFieldsLabel": false,
+		"allFieldsRequired": true,
+		"tableWithInput": true,
+		"tableWithSearch": true,
+		"openTableAfterInput" : true,
+		"tablePageNumbersPos": "header",   "_comment":"header, footer, none",
+		"pageNumbers": true,
+		"pageNumbersSide": [true, true, true, true],   "_comment":"first, prev, next, last",
+		"resetSortButton" : true,
+		"addNewButton": true, 
+		"badFieldStar": true
+	},
+	"linesPerRequest": 50,
+	"buttonsPerView":{
+		"input": ["save", "reset"],
+		"table": ["save", "edit", "reset", "delete"],
+		"search": ["search", "reset"]
+	},
+	"languagesForLabels": false,
+
+	
+
+	"usersTable": {
+			"create":"",
+			"type": "db",
+			"table_name": "admin",
+			"col_user": "user",
+			"col_pass": "pass",
+			"col_type": ""
+		},
+	"adminTypes": {
+		"admin": {
+			"db_val": "1"
+		}
+	},
+
+
+	"mysql2json":{
+			"auto_increment" : {
+				"inputView" : "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType" : "label",
+				"searchView" : "HIDDEN",
+				"searchViewType": "",
+				"sortCol": true
+			},
+			"auto_update" :{
+				"inputView" : "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType" : "label",
+				"searchView" : "HIDDEN",
+				"searchViewType": "",
+				"sortCol": true
+			},
+			"text-short":{
+				"inputView": "DEFAULT",
+				"inputViewType": "input",
+				"tableView": "DEFAULT",
+				"tableViewType": "input",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"sortCol": true
+			},
+			"text":{
+				"inputView": "DEFAULT",
+				"inputViewType": "textarea",
+				"tableView": "NEW-ELEMENT",
+				"tableViewType": "shortLabel",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"sortCol": false
+			}, 
+			"int":{
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"sortCol": true
+			},  
+			"password":{
+				"inputView": "NEW-ELEMENT",
+				"inputViewType": "jinxPassword",
+				"tableView": "HIDDEN",
+				"tableViewType": "",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"sortCol": false,
+				"restrictionFn": "jinxPluginPasswordCheck"
+			},  
+			"boolean":{
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "selectDANE",
+				"sortCol": true
+			}, 
+			"float":{
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"sortCol": true
+			}, 
+			"select":{
+				"inputView" : "DEFAULT",
+				"inputViewType": "select",
+				"tableView": "DEFAULT",
+				"tableViewType" : "select",
+				"searchView" : "DEFAULT",
+				"searchViewType": "select",
+				"sortCol": true
+			},
+			"year":{
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"sortCol": true
+			},  
+			"date":{
+				"inputView": "NEW-ELEMENT",
+				"inputViewType": "jqDatePicker",
+				"tableView": "NEW-ELEMENT",
+				"tableViewType": "jqDatePicker",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "jqDatePicker",
+				"sortCol": true
+			},  
+			"time":{
+				"inputView": "NEW-ELEMENT",
+				"inputViewType": "jinxTimePicker",
+				"tableView": "NEW-ELEMENT",
+				"tableViewType": "jinxTimePicker",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "jinxTimePicker",
+				"sortCol": true
+			},
+			"datetime":{
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"sortCol": true
+			},
+			"label":{
+				"inputView": "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "label",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"sortCol": true
+			}
+	},
+
+	"allowedTypeForDEFAULT": [
+		"radiogroup", "radio", "label", "input", "password", "textarea", "number", "checkbox", "select"
+	],	 "_comment":"this is inputViewType or searchViewType or tableViewType",
+	
+	"newElementsDef":{
+		"browseAndUpload": {
+			"jsSrc": [
+				"plugins/browse_and_upload_moj/jquery.form.min.js", 
+				"plugins/browse_and_upload_moj/upload_plugin.js?v14"
+			],
+			"cssSrc": ["plugins/browse_and_upload_moj/upload_plugin.css?v4"],
+			"async": false
+		},
+		"jqDatePicker" : {
+			"jsSrc": ["plugins/jquery-ui/jquery-ui.min.js"],
+			"cssSrc": ["plugins/jquery-ui/jquery-ui.css", "plugins/jquery-ui/jquery-ui.theme.css"],
+			"async": false
+		},
+		"jinxTimePicker" : {
+			"jsSrc": ["plugins/time-picker/jinx_time_plugin.js"],
+			"cssSrc": [],
+			"async": false
+		},
+		"jinxPassword" : {
+			"jsSrc": ["plugins/jinx-password/jinx_password.js"],
+			"cssSrc": [],
+			"async": false
+		},
+		"colorPicker" : {
+			"jsSrc": ["plugins/color-picker/colpick.js"],
+			"cssSrc": ["plugins/color-picker/colpick.css"],
+			"async": false
+		},
+		"wysiwyg":{
+			"jsSrc": [
+				"plugins/jquery-ui/jquery-ui.min.js",
+				"plugins/jinx-wysiwyg/bau/upload_plugin.js",
+				"plugins/jinx-wysiwyg/html_editor_plugin.js?v1"
+			],
+			"cssSrc": [
+				"plugins/jquery-ui/jquery-ui.css",
+				"plugins/jquery-ui/jquery-ui.theme.css",
+				"plugins/jinx-wysiwyg/html_editor_plugin.css?v1"
+			],
+			"async": false
+		},
+		"shortLabel":{
+			"jsSrc": [],
+			"cssSrc": [],
+			"async": false
+		},
+		"inputSearchAll":{
+			"jsSrc": [],
+			"cssSrc": [],
+			"async": false
+		},
+		"distinctGalFolder": {
+			"jsSrc": [],
+			"cssSrc": [],
+			"async": true
+		},
+		"selectDANE":{
+			"jsSrc": [],
+			"cssSrc": [],
+			"async": false
+		}
+	}
+		
+}

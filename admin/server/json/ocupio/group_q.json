@@ -1,0 +1,147 @@
+	{
+		"jsonTableName": "group_q",
+		"filename": "json/ocupio/group_q.json",
+		"tableName": "group_q",
+		"tableType": "BASE TABLE",
+		"types": [
+			"input",
+			"table",
+			"search"
+		],
+		"inputTitle": "DODAJ",
+		"searchTitle": "PRETRA\u017dI",
+		"tableTitle": "group_q",
+		"linesPerRequest": 50,
+		"tableSettings": {
+			"allFieldsLabel": false,
+			"allFieldsRequired": true,
+			"tableWithInput": true,
+			"tableWithSearch": true,
+			"openTableAfterInput": true,
+			"tablePageNumbersPos": "header",
+			"_comment": "first, prev, next, last",
+			"pageNumbers": true,
+			"pageNumbersSide": [
+				true,
+				true,
+				true,
+				true
+			],
+			"resetSortButton": true,
+			"addNewButton": true,
+			"badFieldStar": true
+		},
+		"buttonsPerView": {
+			"input": [
+				"save",
+				"reset"
+			],
+			"table": [
+				"save",
+				"edit",
+				"reset",
+				"delete"
+			],
+			"search": [
+				"search",
+				"reset"
+			]
+		},
+		"fields": {
+			"group_q_field_id": {
+				"name": "group_q_field_id",
+				"restrictions": [
+					
+				],
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "id",
+				"sqlFieldName": "group_q_field_id",
+				"inputView": "HIDDEN",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "label",
+				"searchView": "HIDDEN",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"group_q_field_group_id": {
+				"name": "group_q_field_group_id",
+				"restrictions": {
+					"val": ">=0;<=4294967295",
+					"type": "int",
+					"notEmpty": true
+				},
+				"attrList": [
+					
+				],
+				"labelLng": false,
+				"label": "group_id",
+				"sqlFieldName": "group_q_field_group_id",
+				"inputView": "DEFAULT",
+				"inputViewType": "",
+				"tableView": "DEFAULT",
+				"tableViewType": "",
+				"searchView": "DEFAULT",
+				"searchViewType": "",
+				"type": "int",
+				"sortCol": true
+			},
+			"group_q_field_question": {
+				"name": "group_q_field_question",
+				"restrictions": {
+					"len": "<=100",
+					"notEmpty": true
+				},
+				"attrList": {
+					"maxlength": "100"
+				},
+				"labelLng": false,
+				"label": "question",
+				"sqlFieldName": "group_q_field_question",
+				"inputView": "DEFAULT",
+				"inputViewType": "input",
+				"tableView": "DEFAULT",
+				"tableViewType": "input",
+				"searchView": "NEW-ELEMENT",
+				"searchViewType": "inputSearchAll",
+				"type": "text-short",
+				"sortCol": true
+			}
+		},
+		"callbackFns": {
+			"afterInsert": "",
+			"afterUpdate": "",
+			"afterDelete": "",
+			"afterHtmlTable": ""
+		},
+		"orderBy": {
+			"inputOrder": [
+				"group_q_field_id",
+				"group_q_field_group_id",
+				"group_q_field_question"
+			],
+			"tableOrder": [
+				"group_q_field_id",
+				"group_q_field_group_id",
+				"group_q_field_question"
+			],
+			"searchOrder": [
+				"group_q_field_id",
+				"group_q_field_group_id",
+				"group_q_field_question"
+			],
+			"sortOrder": {
+				"group_q_field_id": "ASC"
+			},
+			"primKeyOrder": [
+				"group_q_field_id"
+			],
+			"searchDefaultVal": {
+				"no_sql": ""
+			}
+		}
+	}

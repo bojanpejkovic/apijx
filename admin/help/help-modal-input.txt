@@ -1,0 +1,130 @@
+input view slike_pr_input hocu da ubacim
+
+1. napravi view pa promeni:
+	"jsonTableName": "slike_pr_input",
+	"filename": "json/eko2/slike_pr_input.json",
+	"types": [ "input" ],
+	"openTableAfterInput": false,
+
+2. configTables.json u mainMenu dodaj:
+	"slike_pr_input":{
+		"viewName": "slike_pr_input",
+		"label" : ""
+	}
+
+
+3. configTables.json u adminSettings->allowed dodaj
+	"slike_pr_input": [
+		"GET",
+		"POST",
+		"PUT",
+		"DELETE"
+	],
+
+4. configTables.json registruj novu komponentu
+	"pr1Slike":{
+		"jsSrc": [],
+		"cssSrc": [],
+		"async": false
+	}
+
+5. Button i sta ima od podataka sad. 
+jinxFn.pr1Slike = {
+    name: 'pr1Slike',
+	create : function(wrapType, label, allVals, name, args){ 
+        let div =  $(document.createElement('div'));
+		var btn = $(document.createElement('button'));
+		btn.text('DODAJ');
+		btn.on('click', function(){
+	        var id = div.attr('data-id');
+	        var data = { inputFieldValuesOnly:{slike_pr_field_Id_proizvoda: id } };
+			jinxPage.createModalView('slike_pr_input', 'input', data, undefined);
+        });
+        div.append(btn);
+		return div;
+	},
+	val : function(htmlEl, value, calcVals, arg4){ 
+		//jinxPage.display('arg4: '+arg4+' MNOGO: '+jinxPage.json2str(calcVals));
+		if(arg4 === 'set')
+			if(calcVals.proizvodi_field_Id){			
+                htmlEl.attr('data-id', calcVals.proizvodi_field_Id);
+                this.prikaziSlike(calcVals.proizvodi_field_Id, htmlEl);
+			}
+		return '';
+    },
+    prikaziSlike(id, htmlEl){
+        let data = {
+            pageNumber:0, whereCols:[{ colName: 'slike_pr_field_Id_proizvoda', colVal: id, 
+            oper:'=', logicOper: 'AND' }]
+        }
+        jinxPage.ajaxCall('apijx/model/slike_pr/table', 'GET', data, function(getData){
+            if(getData.OKERR == false){
+                jinxPage.display('resp from apijx/model/slikee_pr/table: '+jinxPage.json2str(getData), 'red');
+                return;
+            }
+            let s = getData.lines.reduce( (s, el) => s + el.Slika+';', '' );
+            htmlEl.append(s);
+        });
+    }
+}
+
+
+5.a Button za novi page
+jinxFn.pr1Boje = {
+    name: 'pr1Boje',
+	create : function(wrapType, label, allVals, name, args){ 
+        let div =  $(document.createElement('div'));
+		var btn = $(document.createElement('button'));
+		btn.text('BOJE');
+		btn.on('click', function(){
+	        var id = div.attr('data-id');
+	        var sif = div.attr('data-sif');
+            var data = { 
+				inputFieldValuesOnly:{boje_field_Id_proizvoda: id, boje_field_Sifra: sif }, 
+                whereCols:[{ 
+                    colName: 'boje_field_Id_proizvoda', colVal: id, 
+                    oper:'=', logicOper: 'AND'  }] 
+            };
+			jinxPage.createModalView('boje', 'page', data, undefined);
+			//da se sakrije polje ID koje ne treba da se menja u inputu
+			$('div[data-jinx-cname="proizvodi_grupe_field_ProizvodId"]').hide();
+			//da se postavi naslov
+			setTimeout(()=>
+				$('div[data-jinx-table="1_proizvod_grupe"][data-jinx-view="table"] h2.title').text(sif)
+			, 1000);
+        });
+        div.append(btn);
+		return div;
+	},
+	val : function(htmlEl, value, calcVals, arg4){ 
+		if(arg4 === 'set')
+			if(calcVals.proizvodi_field_Id){			
+                htmlEl.attr('data-id', calcVals.proizvodi_field_Id);
+                htmlEl.attr('data-sif', calcVals.proizvodi_field_Sifra);
+			}
+		return '';
+    }
+};
+
+
+
+6. ubaci pr1Slike kao NEW-ELEMENT u polje koje zelis
+	"proizvodi_field_Slike":{
+		"name": "proizvodi_field_Slike",
+		"restrictions": {},
+		"attrList": [],
+		"labelLng": false,
+		"label": "Slike",
+		"sqlFieldName": "no_sql",
+		"inputView": "HIDDEN",
+		"inputViewType": "",
+		"tableView": "NEW-ELEMENT",
+		"tableViewType": "pr1Slike",
+		"searchView": "HIDDEN",
+		"searchViewType": "",
+		"type": "text-short",
+		"sortCol": false
+	}
+
+7. dodaj u tableOrder
+	"proizvodi_field_Slike"

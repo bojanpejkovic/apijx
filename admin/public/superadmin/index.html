@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="../js/jquery/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="../js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="../js/socket.io.js"></script>
+        <script type="text/javascript" src="../js/sa_js.js"></script>
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="../css/sa_style.css" />
+        <link rel="stylesheet" type="text/css" href="../js/jquery/jquery-ui.css" />
+
+		
+        <title>JINX SUPER ADMIN</title>
+    </head>
+    <body>
+        <div class="sa_error_log">
+            <img class="close_fixed_win toggle_sa_error_log" src="../img/close.png" alt="X" />
+            <div class="list"></div>
+        </div>
+        <div class="a_error_log">
+            <div class="list"></div>
+        </div>
+        <div id="json_edit">
+            <img class="close_fixed_win" id="close_json_edit" src="../img/close.png" alt="X" />
+            <textarea id="json_file"> </textarea><br />
+            <button id="saveFile" class="saveFile">SAVE</button>
+            <button id="saveFileReload" class="saveFile">SAVE AND APPLY</button>
+        </div>
+        <!--
+        za manuelno dodavanje unutar json file.
+        <div id="field_edit">
+            <img class="close_fixed_win" id="close_field_edit" src="../img/close.png" alt="X" />
+            <p>Add <span id="fe_sqlname">...</span> to view "<span id="fe_viewname">...</span>":</p>
+            <p>Position:<input /></p>
+            <li></li>
+            <p>*if field-type is not default, you must change the json file.</p>
+            <button id="saveFieldEdit">SAVE</button>
+        </div>
+        -->
+    	<div class="wrapper">
+            <div id="sql_wrapper">
+                <h1>DB</h1>
+                <button id="test">test</button>
+                <button id="reloadJSON">RELOAD JSON FILES</button><br /><br />
+                
+                <div id="db_view">
+                    <button id="reloadDbStructure">Reload DB structure</button>
+                    <h3>DB structure</h3>
+                    <ul id="jinx_db_tables">Tables:<br /></ul>
+                    <ul id="jinx_db_fields">Fields:<br /></ul>
+                    <ul id="jinx_db_desc">Field description:<br /><li></li></ul>
+                    <ul class="jinx_db_buttons">Options:<br />
+                        <li>
+                            <button id="createJsonDefaultTable">CREATE DEFAULT VIEW FOR TABLE</button>
+                        </li>
+                        <li>Add or Update selected field IN
+                        <li><button id="addSqlField">sql_fields.json</button></li>
+                        <!-- <li><button id="addSqlFieldToDefJson">sql_fields.json AND default JSON file</button></li> -->
+                        <li><button id="addSqlFieldToAllJson">sql_fields.json AND all json files for this table</button></li>
+                    </ul>
+                </div>
+                <br /><div style="clear:both"> </div><br />
+            </div>
+            
+
+
+            <div id="table_page_buttons">
+                <h1>JSON</h1>
+                <ul id="jinx_view_meni">View:<br /></ul>
+                <ul class="jinx_db_buttons">Options:<br />
+                    <li><button id="copyView">COPY VIEW</button></li>
+                    <li><button id="editView">EDIT VIEW</button></li>
+                    <li><button id="deleteView">DELETE VIEW</button></li>
+                    <br />
+                    
+                </ul>
+                <br /><div style="clear:both"> </div><br />
+            </div>
+            
+
+
+            <div id="admin_view">
+                <h1>ADMIN</h1>
+                <a href="../admin/" target="blank">OPEN IN NEW TAB</a>
+                <div id="admin_input_view"></div>
+                <div id="admin_table_view"></div>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="../js/adminpanel/jinx-page.js"></script>
+        <script type="text/javascript" src="../js/adminpanel/jinx-view.js"></script>
+        <script type="text/javascript" src="../js/adminpanel/jinx-field.js"></script>
+        <script type="text/javascript" src="../js/adminpanel/jinx-fns-default.js"></script>
+    </body>
+</html>

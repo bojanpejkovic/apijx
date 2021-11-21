@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="jquery.form.min.js"></script>
+        <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+         <script type="text/javascript" src="jinx_time_plugin.js"></script>
+
+         <link href="jinx_time_plugin.css" rel="stylesheet" />  
+		<script>
+
+            $(document).ready(function(){
+                var $t1 = $('.za_browse').jinx_time({
+                    html_type: 'select',
+                    format: 'HH:MM',
+                    output_format: 'HH:MM',
+                    title: ''
+                });    
+                var $t2 = $('.za_browse2').jinx_time({
+                    html_type: 'input',
+                    format: 'HH:MM',
+                    output_format: 'HH:MM:SS',
+                });   
+                
+
+                $('.tst').on('click', function(){
+                    $t1.val('04:05:06');
+                    alert($t1.val());
+                    $t2.val('04');
+                    alert($t2.val());
+                });
+            });
+
+		</script>
+		
+		<style type="text/css">
+        body{
+            width:100%; height:100%;  text-align:center;
+        }
+           
+		</style>
+		<title>Pejkovic</title>
+    </head>
+    <body>
+        <button class="tst">test</button>
+    	<div class="za_browse" ></div>
+        <div class="za_browse2" ></div>
+
+    </body>
+</html>

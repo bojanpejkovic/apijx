@@ -1,0 +1,79 @@
+.html_editor_plugin{ 
+	border: 1px solid gray;
+	border-radius: 8px;	
+	padding: 10px;	
+	background-color: rgba(230,230,230,.8);
+	width: 800px;  height:400px;
+}
+
+
+.wysiwyg_button_area{ width:100%; }
+ 	.wysiwyg_button{ 
+		margin: 4px;
+		width: 30px;		
+		height: 24px;		
+		background-size: 16px 16px;		
+		background-position: center;		
+		background-repeat: no-repeat;		
+		border: 1px solid #4e4e4e;		
+		box-shadow: none;		
+		background-color:#FFF;	
+		border-radius: 4px;    
+	}
+ 	.wysiwyg_button:hover{cursor: pointer;}
+ 	.wysiwyg_button img{ height:2em; width:auto; vertical-align: middle;}
+
+.wysiwyg_button_area .icon_bold{ background-image: url('icons/bold.png'); }
+.wysiwyg_button_area .icon_italic{ background-image: url('icons/italic.png'); }
+.wysiwyg_button_area .icon_underline{ background-image: url('icons/underline.png'); }
+.wysiwyg_button_area .icon_crossline{ background-image: url('icons/cross-out.png'); }
+.wysiwyg_button_area .icon_link{ background-image: url('icons/link.png'); background-size: 22px 22px;	 }
+.wysiwyg_button_area .icon_image{ background-image: url('icons/image.png');  background-size: 22px 22px; 
+display: inline-block;  vertical-align: bottom; height: 22px; }
+.wysiwyg_button_area .icon_numbered{ background-image: url('icons/numbered.png'); }
+.wysiwyg_button_area .icon_list{ background-image: url('icons/list.png'); }
+.wysiwyg_button_area .icon_alignment2{ background-image: url('icons/text-alignment2.png'); }
+.wysiwyg_button_area .icon_alignment{ background-image: url('icons/text-alignment.png'); }
+.wysiwyg_button_area .icon_alignment1{ background-image: url('icons/text-alignment1.png'); }
+.wysiwyg_button_area .icon_alignment3{ background-image: url('icons/text-alignment3.png'); }
+
+.iframe_wrapper{ 
+	width: 100%;
+	height: calc(100% - 75px);
+}
+iframe.wysiwyg_iframe{ 
+	position:relative; width:100%; height:100%; 
+	background-color: white; 
+}
+ 
+
+.wysiwyg_button_area .inputFileBrowse{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.wysiwyg_button_area .div_inline{
+	display: inline-block;
+	vertical-align: top;
+	height: 22px;
+}
+
+.imgStyling{
+	position:fixed; display:none;
+	padding:1em;
+	background: white;
+	box-shadow: 4px 4px 8px black;
+	border:2px solid black;
+	top:10%; left:50%; transform: translateX(-50%); 
+	width:auto; height:auto;
+}
+.imgStyling p{
+	line-height:2em;
+}
+
+form.jinx_wys_upload_browse *{ display:none; }
+form.jinx_wys_upload_browse label{ display:inline-block; }

@@ -1,0 +1,84 @@
+
+POSTUPAK:
+- login 
+    kad se poziva: 
+        let data = {user:user, pass:pass};
+        let resp = await promiseAjaxCall('apijx/login', 'GET', data);
+        resp je {
+                "OKERR":true false, 
+                "link": "/superadmin" ili "/admin" "/regular", 
+                "adminVal": samo ako nije iz DBcongif, type i appId  
+                }
+    - SuperAdmin uspeva
+        - samo sa vrednostima iz DBconfig
+    - Admin uspeva
+        - vrednosti iz DBconfig - appId ce biti 0
+    - Admin i Regular    
+        - vrednosti iz configTables.usersTable
+            "type": "db",
+			"table_name": "users",
+			"col_id": "id",
+			"col_user": "email",
+			"col_pass": "pass",
+			"col_type": "type",
+            - Ako postoji kolona usersTable.col_type:
+                - ako se vrednost nalazi u  configTables.adminTypes.admin.db_val
+                    - tip je admin (ili vec tip po vrednosti iz configTables.adminTypes)
+                - ako se vrednost ne nalazi 
+                    - tip je regular 
+                - appId usera se postavlja na id dobijen iz upita.
+                - u req.session se postavlja token - koji se posle uvek proverava
+            - Ako NE postoji kolona usersTable.col_type:
+                - definise su main.defaultLoginUserType - da li je ta tabela za admine ili regular usere 
+                - vraca se taj tip ako je uspesno logovan
+
+- ovde hash ide po automatizmu - kako ga ja namestim SAD!!!
+
+
+
+Ako gornje opcije NE odgovaraju iz nekog razloga (potrebne su dodatne kolone za rez ili bilo sta:)
+- loginQuery
+    - configTables.usersTable:
+        "loginQuery": "userCheck",  //naziv iz sql_fields.sqlQueries
+        "logoutQuery": "logoutUser"
+    - kad se poziva:
+        let data = {sqlQuery:'userCheck', whereCols:['s@p.com', 's']};
+        let resp = await promiseAjaxCall('apijx/sqlParamQuery', 'POST', data);
+        - poziva se upit koji se zove kako je navedeno u loginQuery 
+        - response je sta god je rezultat tog upita!!!
+
+    - da bi se TOKEN pravilno definisao:
+        - mora da se u usersTable.col_type i usersTable.col_id definisu koje su kolone.
+
+        - ako ne postoji kolona usersTable.col_type:
+            - definise su main.defaultLoginUserType - da li je ta tabela za admine ili regular usere 
+            - adminType isto kao i gore: 
+            - Ako postoji kolona usersTable.col_type
+                ....
+            - Ako NE postoji kolona usersTable.col_type
+                ....
+
+-ovde hash za login ide preko:
+    - "userCheck":
+        .....
+            "userDefFn": [
+                [
+                    1,
+                    "my_password_hash"
+                ]
+            ],
+
+
+
+
+
+- his own loginsystem
+    - posle logovanja - mora da izabere jedan nacin od gornja dva da se uloguje
+        - ili da preko spec stringa se dozvoli log za admina ili superadmina
+
+
+
+- provera posle login:
+    await promiseAjaxCall("apijx/checkToken", "GET", {});
+    - vraca se user, appId, type
+
