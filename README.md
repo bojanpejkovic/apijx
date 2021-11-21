@@ -124,7 +124,7 @@ The above example shows how to get data from only one table.
 
 
 
-## JOIN Tables
+## Join Tables
 If you need two tables , you can call promiseAjaxCall twice (or one inside the another in ajaxCall) or use join.
 
     let data = {
@@ -153,7 +153,7 @@ Example for using promiseAjaxCall twice:
 
 
 
-## RESPONSE FROM BACKEND
+# Response from backend
 
 
 If await is not used, the callback function serves to process the results we got from the server (from the database). It must have one input argument, which is an object (called the response in the example) that contains all the data specified in the request.
