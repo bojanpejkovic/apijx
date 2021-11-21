@@ -85,7 +85,8 @@ One example of response received data:
 
         searchBy: [], // fields from whereCols
 
-        sql_query: "SELECT` pictures`.`id`, `pictures`.`picture`,` pictures`.`title`, `pictures`.`text`,` pictures`.`type`, `pictures`.`sequence `FROM` pictures` ORDER BY pictures.id ASC ", // which query has been executed. This serves only to correct bugs, and turns off in production mode
+        sql_query: "SELECT` pictures`.`id`, `pictures`.`picture`,` pictures`.`title`, `pictures`.`text`,` pictures`.`type`, `pictures`.`sequence `FROM` pictures` ORDER BY pictures.id ASC ", 
+        // which query has been executed. This serves only to correct bugs, and turns off in production mode
 
     }
 
