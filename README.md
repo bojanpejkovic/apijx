@@ -1,4 +1,4 @@
-## How to create apijx:
+# How to create apijx:
 
 
 1. download admin folder from git
@@ -25,7 +25,7 @@ Regular users dont have access to admin panel. Regular users can get (post put o
 Which brings you to the next section:
 
 
-## Using routes on FRONT-END:
+# Using routes on FRONT-END:
 
 
 First include the js file in index.html: <script src = "admin/public/js/apijx/ajaxCall.js"></script>
@@ -42,20 +42,20 @@ These are the functions called from the front-end. You can also look at function
 
 ajaxCall has 4 arguments: ajaxCall (rout, method, data, callback)
 Example:
-ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(resp){
-    console.log (resp);
-});
+    ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(resp){
+        console.log (resp);
+    });
 
 
 promiseAjaxCall returns a promise, it does not need a callback, so it is called via:
 let response = await promiseAjaxCall (rout, method, data);
 Example:
-let response = await promiseAjaxCall ('apijx/model/pictures/table', 'GET', {});
-if (response.OKERR) {
-    console.log (response.lines);
-}
+    let response = await promiseAjaxCall ('apijx/model/pictures/table', 'GET', {});
+    if (response.OKERR) {
+        console.log (response.lines);
+    }
 
-
+## Path
 Path in the example: 'apijx/model/pictures/table' has 4 items in the route.
 
 
@@ -80,6 +80,7 @@ For DELETE, 4.arg is :id, so path: 'apijx/model/pictures/:2.
 The row number 2 is deleted.
 
 
+## Data
 The data (in the example {}, empty object) is used to send additional data along with the request. When the GET method is used as a request, it can contain info about which rows you want, how many rows, which columns… If you do not send any additional info, you will get the results with default values.
 
 The column names of a table are written as [table_name]_field_[field_name]
@@ -91,7 +92,7 @@ For example. pictures_field_name represents the column "name" from the "pictures
 Data options:
 
     let data = {
-        orderBy: {pictures_field_sequence: 'ASC'}, // sorting field, if better specified, it will be sorted by enumeration order
+        orderBy: {pictures_field_sequence: 'ASC'}, // sorting field, if more are specified, it will be sorted by enumeration order
 
         linesPerRequest: 2, // number of rows to return, if omitted, returns max 50 rows. If 0 is entered, then returns all rows from the table.
 
@@ -123,74 +124,68 @@ The above example shows how to get data from only one table.
 
 
 
-## Two Tables
-If you need two tables , you can call promiseAjaxCall twice (or one inside the another in ajaxCall).
-Example: 
-let response1 = await promiseAjaxCall(..., {selCols:['table_field_id']}); //any rout with some ids
-let response2 = await promiseAjaxCall (path, 'GET', {
-    whereCols: [{
-        colName: 'pictures_field_user_id',
-        colVal: '(' + response1.lines.map line =>line.id).join (",") + ')',
-        opera: 'IN',
-        logicOper: 'AND'
-    }]
-})
+## JOIN Tables
+If you need two tables , you can call promiseAjaxCall twice (or one inside the another in ajaxCall) or use join.
 
-
-
-or to use join:
-
-let data = {
-whereCols: [// for where in SQL.
-
-{colName: 'pictures_field_name', colVal: '% a%', oper: 'LIKE', logicOper: 'AND'},
-
-{colName: 'pictures_field_user_id', colVal: '3', oper: '=', logicOper: 'AND'}
-
-],
-
-join: ["users"], // merge with a table
-
-selCols: ['pictures_field_name', 'user_
-
-}
-
+    let data = {
+        whereCols: [// for where in SQL.
+            {colName: 'pictures_field_name', colVal: '% a%', oper: 'LIKE', logicOper: 'AND'},
+            {colName: 'pictures_field_user_id', colVal: '3', oper: '=', logicOper: 'AND'}
+        ],
+        join: ["users"], // merge with a table
+        selCols: ['pictures_field_name', 'user_field_name']
+    }
+    
 For join, however, the condition for merging tables in the sql_fields.json file must be specified beforehand.
+
+Example for using promiseAjaxCall twice: 
+    let response1 = await promiseAjaxCall(..., {selCols:['table_field_id']}); //any rout with some ids
+    let response2 = await promiseAjaxCall (path, 'GET', {
+        whereCols: [{
+            colName: 'pictures_field_user_id',
+            colVal: '(' + response1.lines.map line =>line.id).join (",") + ')',
+            opera: 'IN',
+            logicOper: 'AND'
+        }]
+    })
+
+
+
 
 
 If await is not used, the callback function serves to process the results we got from the server (from the database). It must have one input argument, which is an object (called the response in the example) that contains all the data specified in the request.
 
 The same goes for a call via await.
 
-
+## RESPONSE FROM BACKEND
 One example of response received data:
 
-response = {
+    response = {
 
-OKERR: true, // whether the request returned data. If there are no queues for results or an error has occurred on the server - this is false.
+        OKERR: true, // whether the request returned data. If there are no queues for results or an error has occurred on the server - this is false.
 
-total_lines: 3, (number of rows obtained as a result)
+        total_lines: 3, (number of rows obtained as a result)
 
-linesPerRequest: 50, (how many max rows can be returned)
+        linesPerRequest: 50, (how many max rows can be returned)
 
-pageNumber: 2, (page number, 0 if all data is returned)
+        pageNumber: 2, (page number, 0 if all data is returned)
 
-lines: [// rows from base. THE MOST IMPORTANT THING
+        lines: [// rows from base. THE MOST IMPORTANT THING
 
-0: {id: "1", image: "pictures1.jpg", title: "", text: "", type: "main", order: "1"},
+            0: {id: "1", image: "pictures1.jpg", title: "", text: "", type: "main", order: "1"},
 
-1: {id: "2", image: "pictures2.jpg", title: "", text: "",…},
+            1: {id: "2", image: "pictures2.jpg", title: "", text: "",…},
 
-2: {id: "3", image: "pictures3.jpg", title: "", text: "",…},
+            2: {id: "3", image: "pictures3.jpg", title: "", text: "",…},
 
-length: 3
+            length: 3
 
-]
+        ]
 
-orderBy: {pictures_field_id: "ASC"}, // the field by which it is all sorted
+        orderBy: {pictures_field_id: "ASC"}, // the field by which it is all sorted
 
-searchBy: [], // fields from whereCols
+        searchBy: [], // fields from whereCols
 
-sql_query: "SELECT` pictures`.`id`, `pictures`.`picture`,` pictures`.`title`, `pictures`.`text`,` pictures`.`type`, `pictures`.`sequence `FROM` pictures` ORDER BY pictures.id ASC ", // which query has been executed. This serves only to correct bugs, and turns off in production mode
+        sql_query: "SELECT` pictures`.`id`, `pictures`.`picture`,` pictures`.`title`, `pictures`.`text`,` pictures`.`type`, `pictures`.`sequence `FROM` pictures` ORDER BY pictures.id ASC ", // which query has been executed. This serves only to correct bugs, and turns off in production mode
 
-}
+    }
