@@ -139,6 +139,7 @@ If you need two tables , you can call promiseAjaxCall twice (or one inside the a
 For join, however, the condition for merging tables in the sql_fields.json file must be specified beforehand.
 
 Example for using promiseAjaxCall twice: 
+
     let response1 = await promiseAjaxCall(..., {selCols:['table_field_id']}); //any rout with some ids
     let response2 = await promiseAjaxCall (path, 'GET', {
         whereCols: [{
@@ -152,12 +153,13 @@ Example for using promiseAjaxCall twice:
 
 
 
+## RESPONSE FROM BACKEND
+
 
 If await is not used, the callback function serves to process the results we got from the server (from the database). It must have one input argument, which is an object (called the response in the example) that contains all the data specified in the request.
 
 The same goes for a call via await.
 
-## RESPONSE FROM BACKEND
 One example of response received data:
 
     response = {
