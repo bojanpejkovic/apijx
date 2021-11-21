@@ -1,6 +1,5 @@
 # How to create apijx:
 
-
 1. download admin folder from git
 
 2a. if its a react project, put it in public folder 
@@ -30,7 +29,7 @@ Regular users dont have access to admin panel. Regular users can get (post put o
 Which brings you to the next section:
 
 
-# Using routes on FRONT-END:
+# Using routes on front-end:
 
 How to use routes in your project.
 
@@ -54,6 +53,44 @@ To test it try this:
     
 Now just change languages to any table from your DB, and check your console.
 
+
+
+# Response from backend
+
+One example of response received data:
+
+    response = {
+
+        OKERR: true, // whether the request returned data. If there are no queues for results or an error has occurred on the server - this is false.
+
+        total_lines: 3, (number of rows obtained as a result)
+
+        linesPerRequest: 50, (how many max rows can be returned)
+
+        pageNumber: 2, (page number, 0 if all data is returned)
+
+        lines: [// rows from base. THE MOST IMPORTANT THING
+
+            0: {id: "1", image: "pictures1.jpg", title: "", text: "", type: "main", order: "1"},
+
+            1: {id: "2", image: "pictures2.jpg", title: "", text: "",…},
+
+            2: {id: "3", image: "pictures3.jpg", title: "", text: "",…},
+
+            length: 3
+
+        ]
+
+        orderBy: {pictures_field_id: "ASC"}, // the field by which it is all sorted
+
+        searchBy: [], // fields from whereCols
+
+        sql_query: "SELECT` pictures`.`id`, `pictures`.`picture`,` pictures`.`title`, `pictures`.`text`,` pictures`.`type`, `pictures`.`sequence `FROM` pictures` ORDER BY pictures.id ASC ", // which query has been executed. This serves only to correct bugs, and turns off in production mode
+
+    }
+
+
+
 You have 2 function when calling some route:
 ajaxCall
 and
@@ -68,10 +105,13 @@ ajaxCall has 4 arguments:
 
 Example:
 
-    ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(resp){        
-        console.log (resp);    
+    ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(response){        
+        console.log (response);    
     });
 
+The callback function serves to process the results we got from the server (from the database). It must have one argument, which is an object (called the response in the example) that contains all the data specified in the request.
+
+The same goes for a call via await.
 
 promiseAjaxCall returns a promise, it does not need a callback, so it is called via:
 
@@ -84,9 +124,11 @@ Example:
         console.log (response.lines);
     }
 
-## Path
-Path in the example: 'apijx/model/pictures/table' has 4 items in the route.
 
+
+## Path
+
+Path in the example: 'apijx/model/pictures/table' has 4 items in the route.
 
 call url always starts with apijx/ - that way, ajaxCall function will transform your call to admin folder.
 
@@ -180,43 +222,3 @@ Example for using promiseAjaxCall twice:
     })
 
 
-
-
-# Response from backend
-
-
-If await is not used, the callback function serves to process the results we got from the server (from the database). It must have one input argument, which is an object (called the response in the example) that contains all the data specified in the request.
-
-The same goes for a call via await.
-
-One example of response received data:
-
-    response = {
-
-        OKERR: true, // whether the request returned data. If there are no queues for results or an error has occurred on the server - this is false.
-
-        total_lines: 3, (number of rows obtained as a result)
-
-        linesPerRequest: 50, (how many max rows can be returned)
-
-        pageNumber: 2, (page number, 0 if all data is returned)
-
-        lines: [// rows from base. THE MOST IMPORTANT THING
-
-            0: {id: "1", image: "pictures1.jpg", title: "", text: "", type: "main", order: "1"},
-
-            1: {id: "2", image: "pictures2.jpg", title: "", text: "",…},
-
-            2: {id: "3", image: "pictures3.jpg", title: "", text: "",…},
-
-            length: 3
-
-        ]
-
-        orderBy: {pictures_field_id: "ASC"}, // the field by which it is all sorted
-
-        searchBy: [], // fields from whereCols
-
-        sql_query: "SELECT` pictures`.`id`, `pictures`.`picture`,` pictures`.`title`, `pictures`.`text`,` pictures`.`type`, `pictures`.`sequence `FROM` pictures` ORDER BY pictures.id ASC ", // which query has been executed. This serves only to correct bugs, and turns off in production mode
-
-    }
