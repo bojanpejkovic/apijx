@@ -89,27 +89,31 @@ For example. pictures_field_name represents the column "name" from the "pictures
 
 
 Data options:
-let data = {
-    orderBy: {pictures_field_sequence: 'ASC'}, // sorting field, if better specified, it will be sorted by enumeration order
-    linesPerRequest: 2, // number of rows to return, if omitted, returns max 50 rows. If 0 is entered, then returns all rows from the table.
-    pageNumber: 2, // if max per page is 50 rows - 2 indicates it needs to return everything from 51-100 rows
-    whereCols: [// for where in SQL.
 
-        {colName: 'pictures_field_name', colVal: '%a%', oper: 'LIKE', logicOper: 'AND'},
+    let data = {
+        orderBy: {pictures_field_sequence: 'ASC'}, // sorting field, if better specified, it will be sorted by enumeration order
 
-        {colName: 'pictures_field_user_id', colVal: '3', oper: '=', logicOper: 'AND'},
+        linesPerRequest: 2, // number of rows to return, if omitted, returns max 50 rows. If 0 is entered, then returns all rows from the table.
 
-        {colName: 'pictures_field_user_id', colVal: '5', oper: '=', logicOper: 'OR'}
+        pageNumber: 2, // if max per page is 50 rows - 2 indicates it needs to return everything from 51-100 rows
 
-    ], // this is for where in sql.  logicOper in the query goes BEFORE the condition. So in the example above:  user_id = 5 OR user_id = 3
+        whereCols: [// for where in SQL.
 
-    join: ["users"], // merge with a table
+            {colName: 'pictures_field_name', colVal: '%a%', oper: 'LIKE', logicOper: 'AND'},
 
-    whereCompGroup: ['2-3'] // if parentheses are used in whereCols.
+            {colName: 'pictures_field_user_id', colVal: '3', oper: '=', logicOper: 'AND'},
 
-    selCols: ['pictures_field_name', 'user_field_name']
+            {colName: 'pictures_field_user_id', colVal: '5', oper: '=', logicOper: 'OR'}
 
-}
+        ], // this is for where in sql.  logicOper in the query goes BEFORE the condition. So in the example above:  user_id = 5 OR user_id = 3
+
+        join: ["users"], // merge with a table
+
+        whereCompGroup: ['2-3'] // if parentheses are used in whereCols.
+
+        selCols: ['pictures_field_name', 'user_field_name']
+
+    }
 
 These are all possible variants, and if you use any of these options, then you use data as 3rd argument instead of empty object { }
 
