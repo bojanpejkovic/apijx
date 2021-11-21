@@ -18,7 +18,9 @@
 
 ## Open an admin panel
 Open localhost/.../admin in the browser and you can login to admin panel.
+
 You can login as superadmin, where you have options to change json files that represents your DataBase. 
+
 You can login as admin with admin account. This is something that you want for the site administrator.
 
 Regular users dont have access to admin panel. Regular users can get (post put or delete if you allow), only with the routes you defined in front-end.
@@ -28,7 +30,8 @@ Which brings you to the next section:
 # Using routes on FRONT-END:
 
 
-First include the js file in index.html: <script src = "admin/public/js/apijx/ajaxCall.js"></script>
+First include the js file in index.html: 
+    <script src = "admin/public/js/apijx/ajaxCall.js"></script>
 
 Than you can call 2 functions:
 
@@ -42,14 +45,18 @@ These are the functions called from the front-end. You can also look at function
 
 ajaxCall has 4 arguments: ajaxCall (rout, method, data, callback)
 Example:
-    ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(resp){
-        console.log (resp);
+
+    ajaxCall ('apijx/model/pictures/table', 'GET', {}, function(resp){        
+        console.log (resp);    
     });
 
 
 promiseAjaxCall returns a promise, it does not need a callback, so it is called via:
-let response = await promiseAjaxCall (rout, method, data);
+
+    let response = await promiseAjaxCall (rout, method, data);
+
 Example:
+    
     let response = await promiseAjaxCall ('apijx/model/pictures/table', 'GET', {});
     if (response.OKERR) {
         console.log (response.lines);
